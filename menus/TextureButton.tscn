@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://menus/TextureButton.gd" type="Script" id=1]
+[ext_resource path="res://menus/SRight.png" type="Texture" id=2]
+[ext_resource path="res://menus/font.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://menus/SLeft.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[node name="TextureButton" type="TextureButton"]
+margin_top = 37.0
+margin_right = 320.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 0, 15 )
+focus_mode = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightArrow" type="Sprite" parent="."]
+position = Vector2( 260, 5 )
+texture = ExtResource( 2 )
+
+[node name="LeftArrow" type="Sprite" parent="."]
+position = Vector2( 60, 5 )
+texture = ExtResource( 4 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.33374
+margin_top = -3.3371
+margin_right = -0.33374
+margin_bottom = 1.6629
+rect_min_size = Vector2( 0, 20 )
+mouse_filter = 2
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center] Text button [/center]"
+text = " Text button "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="focus_entered" from="." to="." method="_on_TextureButton_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_TextureButton_focus_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_TextureButton_mouse_entered"]

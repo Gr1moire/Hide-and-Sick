@@ -1,0 +1,213 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://menus/TextureButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://menus/Menu.gd" type="Script" id=2]
+[ext_resource path="res://scenes/common/assets/TileA4_PHC_Interior-Hospital.png" type="Texture" id=3]
+[ext_resource path="res://menus/font.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://scenes/common/assets/TileA5_PHC_Interior-Hospital.png" type="Texture" id=5]
+[ext_resource path="res://scenes/common/assets/TileB_PHC_Interior-Hospital.png" type="Texture" id=6]
+[ext_resource path="res://scenes/common/assets/TileC_PHC_Interior-Hospital-Alt.png" type="Texture" id=7]
+
+[sub_resource type="TileSet" id=1]
+0/name = "TileA4_PHC_Interior-Hospital.png 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 368, 256 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "TileA5_PHC_Interior-Hospital.png 1"
+1/texture = ExtResource( 5 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 128, 160 )
+1/tile_mode = 2
+1/autotile/icon_coordinate = Vector2( 0, 0 )
+1/autotile/tile_size = Vector2( 16, 16 )
+1/autotile/spacing = 0
+1/autotile/occluder_map = [  ]
+1/autotile/navpoly_map = [  ]
+1/autotile/priority_map = [  ]
+1/autotile/z_index_map = [  ]
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="TileSet" id=2]
+0/name = "TileB_PHC_Interior-Hospital.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 256, 256 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "TileC_PHC_Interior-Hospital-Alt.png 1"
+1/texture = ExtResource( 7 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 256, 256 )
+1/tile_mode = 2
+1/autotile/icon_coordinate = Vector2( 0, 0 )
+1/autotile/tile_size = Vector2( 16, 16 )
+1/autotile/spacing = 0
+1/autotile/occluder_map = [  ]
+1/autotile/navpoly_map = [  ]
+1/autotile/priority_map = [  ]
+1/autotile/z_index_map = [  ]
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="TileSet" id=3]
+0/name = "TileB_PHC_Interior-Hospital.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 256, 256 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "TileC_PHC_Interior-Hospital-Alt.png 1"
+1/texture = ExtResource( 7 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 256, 256 )
+1/tile_mode = 2
+1/autotile/icon_coordinate = Vector2( 0, 0 )
+1/autotile/tile_size = Vector2( 16, 16 )
+1/autotile/spacing = 0
+1/autotile/occluder_map = [  ]
+1/autotile/navpoly_map = [  ]
+1/autotile/priority_map = [  ]
+1/autotile/z_index_map = [  ]
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 4 )
+
+[node name="Menu" type="Node"]
+script = ExtResource( 2 )
+
+[node name="First Layer" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 65556, 1, 0, 262164, 2, 0, 262164, 3, 0, 262164, 4, 0, 262164, 5, 0, 262165, 6, 0, 262165, 7, 0, 65555, 8, 0, 196628, 9, 0, 196628, 10, 0, 196628, 11, 0, 196628, 12, 0, 65556, 13, 0, 262165, 14, 0, 262165, 15, 0, 262165, 16, 0, 262165, 17, 0, 262165, 18, 0, 262165, 19, 0, 65555, 65536, 0, 196630, 65537, 0, 327699, 65538, 0, 327700, 65539, 0, 327700, 65540, 0, 327700, 65541, 0, 327700, 65542, 0, 327702, 65543, 0, 196627, 65544, 0, 196628, 65545, 0, 196628, 65546, 0, 196628, 65547, 0, 196628, 65548, 0, 196630, 65549, 0, 327699, 65550, 0, 327700, 65551, 0, 327700, 65552, 0, 327700, 65553, 0, 327700, 65554, 0, 327700, 65555, 0, 196627, 131072, 0, 196630, 131073, 0, 196613, 131074, 0, 196614, 131075, 0, 196614, 131076, 0, 196614, 131077, 0, 196614, 131078, 0, 196614, 131079, 0, 196627, 131080, 0, 196628, 131081, 0, 196628, 131082, 0, 196628, 131083, 0, 196628, 131084, 0, 196630, 131085, 0, 196613, 131086, 0, 196614, 131087, 0, 196614, 131088, 0, 196614, 131089, 0, 196614, 131090, 0, 196615, 131091, 0, 196627, 196608, 0, 196630, 196609, 1, 196608, 196610, 1, 196608, 196611, 1, 196608, 196612, 1, 196608, 196613, 1, 196608, 196614, 1, 196608, 196615, 0, 262163, 196616, 0, 262164, 196617, 0, 262164, 196618, 0, 262164, 196619, 0, 262164, 196620, 0, 262166, 196621, 1, 196608, 196622, 1, 196608, 196623, 1, 196608, 196624, 1, 196608, 196625, 1, 196608, 196626, 1, 196608, 196627, 0, 196627, 262144, 0, 196630, 262145, 1, 196608, 262146, 1, 196608, 262147, 1, 196608, 262148, 1, 196608, 262149, 1, 196608, 262150, 1, 196608, 262151, 0, 327699, 262152, 0, 327700, 262153, 0, 327701, 262154, 0, 327700, 262155, 0, 327701, 262156, 0, 327702, 262157, 1, 196608, 262158, 1, 196608, 262159, 1, 196608, 262160, 1, 196608, 262161, 1, 196608, 262162, 1, 196608, 262163, 0, 196627, 327680, 0, 196630, 327681, 1, 196608, 327682, 1, 196608, 327683, 1, 196608, 327684, 1, 196608, 327685, 1, 196608, 327686, 1, 196608, 327687, 0, 327699, 327688, 0, 327700, 327689, 0, 327701, 327690, 0, 327700, 327691, 0, 327701, 327692, 0, 327702, 327693, 1, 196608, 327694, 1, 196608, 327695, 1, 196608, 327696, 1, 196608, 327697, 1, 196608, 327698, 1, 196608, 327699, 0, 196627, 393216, 0, 196630, 393217, 1, 196608, 393218, 1, 196608, 393219, 1, 196608, 393220, 1, 196608, 393221, 1, 196608, 393222, 1, 196608, 393223, 1, 196608, 393224, 1, 196608, 393225, 1, 196608, 393226, 1, 196608, 393227, 1, 196608, 393228, 1, 196608, 393229, 1, 196608, 393230, 1, 196608, 393231, 1, 196608, 393232, 1, 196608, 393233, 1, 196608, 393234, 1, 196608, 393235, 0, 196627, 458752, 0, 196630, 458753, 1, 196608, 458754, 1, 196608, 458755, 1, 196608, 458756, 1, 196608, 458757, 1, 196608, 458758, 1, 196608, 458759, 1, 196608, 458760, 1, 196608, 458761, 1, 196608, 458762, 1, 196608, 458763, 1, 196608, 458764, 1, 196608, 458765, 1, 196608, 458766, 1, 196608, 458767, 1, 196608, 458768, 1, 196608, 458769, 1, 196608, 458770, 1, 196608, 458771, 0, 196627, 524288, 0, 196630, 524289, 1, 196608, 524290, 1, 196608, 524291, 1, 196608, 524292, 1, 196608, 524293, 1, 196608, 524294, 1, 196608, 524295, 1, 196608, 524296, 1, 196608, 524297, 1, 196608, 524298, 1, 196608, 524299, 1, 196608, 524300, 1, 196608, 524301, 1, 196608, 524302, 1, 196608, 524303, 1, 196608, 524304, 1, 196608, 524305, 1, 196608, 524306, 1, 196608, 524307, 0, 196627, 589824, 0, 196630, 589825, 1, 196608, 589826, 1, 196608, 589827, 1, 196608, 589828, 1, 196608, 589829, 1, 196608, 589830, 1, 196608, 589831, 1, 196608, 589832, 1, 196608, 589833, 1, 196608, 589834, 1, 196608, 589835, 1, 196608, 589836, 1, 196608, 589837, 1, 196608, 589838, 1, 196608, 589839, 1, 196608, 589840, 1, 196608, 589841, 1, 196608, 589842, 1, 196608, 589843, 0, 196627, 655360, 0, 196630, 655361, 1, 196608, 655362, 1, 196608, 655363, 1, 196608, 655364, 1, 196608, 655365, 1, 196608, 655366, 1, 196608, 655367, 1, 196608, 655368, 1, 196608, 655369, 1, 196608, 655370, 1, 196608, 655371, 1, 196608, 655372, 1, 196608, 655373, 1, 196608, 655374, 1, 196608, 655375, 1, 196608, 655376, 1, 196608, 655377, 1, 196608, 655378, 1, 196608, 655379, 0, 196627, 720896, 0, 196630, 720897, 1, 196608, 720898, 1, 196608, 720899, 1, 196608, 720900, 1, 196608, 720901, 1, 196608, 720902, 1, 196608, 720903, 1, 196608, 720904, 1, 196608, 720905, 1, 196608, 720906, 1, 196608, 720907, 1, 196608, 720908, 1, 196608, 720909, 1, 196608, 720910, 1, 196608, 720911, 1, 196608, 720912, 1, 196608, 720913, 1, 196608, 720914, 1, 196608, 720915, 0, 196627 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Second Layer" type="TileMap" parent="First Layer"]
+tile_set = SubResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 65553, -1610612735, 917515, 131089, -1610612735, 917516, 262151, 0, 262144 )
+
+[node name="Third Layer" type="TileMap" parent="First Layer"]
+tile_set = SubResource( 3 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 131073, 0, 262147, 131074, 0, 327689, 131075, 0, 327691, 131076, 0, 262147, 131077, 0, 327689, 131078, 0, 327691, 131085, 1, 262147, 131086, 1, 327690, 131087, 1, 524294, 131088, 1, 262147, 131089, 1, 327690, 131090, 1, 524295, 196609, 0, 327683, 196610, 0, 393225, 196611, 0, 393227, 196612, 0, 327683, 196613, 0, 393225, 196614, 0, 393227, 196621, 1, 327683, 196622, 1, 393226, 196623, 1, 589831, 196624, 1, 327683, 196625, 1, 393226, 196626, 1, 589831, 262146, 0, 458761, 262149, 0, 458761, 262151, 0, 131076, 262152, 0, 131077, 262153, 0, 131078, 262154, 1, 131078, 262155, 1, 131077, 262156, 1, 131079, 262158, 1, 458762, 262161, 1, 458762, 327687, 0, 196612, 327688, 0, 196613, 327689, 0, 196614, 327690, 536870913, 196614, 327691, 536870913, 196613, 327692, 536870913, 196615, 327698, 1, 983051, 393223, 0, 262148, 393224, 0, 262150, 393225, 0, 262148, 393226, 1, 262151, 393227, 1, 262150, 393228, 1, 262151, 458753, 0, 327684, 458767, 1, 917515, 458768, 1, 983053, 458770, 1, 327685, 524289, 0, 393220, 524296, 1, 917515, 524297, 1, 917516, 524298, 1, 917516, 524299, 1, 983053, 524306, 1, 393221, 589825, 0, 393220, 589832, 1, 983052, 589833, 1, 917516, 589834, 1, 917516, 589835, 536870913, 917515, 589842, 1, 393221, 655361, 0, 458756, 655377, 1, 983051, 655378, 1, 458757, 720897, 0, 524292, 720909, 1, 983052, 720910, 1, 917517, 720914, 1, 524293 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+margin_right = 320.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 0, 90 )
+
+[node name="Label" type="Label" parent="VBoxContainer/CenterContainer"]
+margin_left = 126.0
+margin_top = 37.0
+margin_right = 194.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 4 )
+text = "Hide and Sick"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 94.0
+margin_right = 320.0
+margin_bottom = 184.0
+rect_min_size = Vector2( 0, 90 )
+alignment = 1
+
+[node name="Start" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 28.0
+margin_bottom = 43.0
+focus_neighbour_bottom = NodePath("../Exit")
+text = "Start"
+arrow_margin_from_center = 35
+
+[node name="Exit" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 47.0
+margin_bottom = 62.0
+focus_neighbour_top = NodePath("../Start")
+text = "Exit"
+arrow_margin_from_center = 35
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
