@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0.107691, 3.06842 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+
+[node name="HidingSpot" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HidingSpot"]
+position = Vector2( 244.5, 68.5 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="HidingSpot" to="Player" method="_on_HidingSpot_body_entered"]
+[connection signal="body_exited" from="HidingSpot" to="Player" method="_on_HidingSpot_body_exited"]

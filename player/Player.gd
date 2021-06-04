@@ -47,3 +47,16 @@ func move_state(delta):
 
 func move():
 	velocity = move_and_slide(velocity)
+
+var isHided = false
+var canHide = false
+
+func _input(event):
+	if canHide:
+		if Input.is_action_pressed("hide"):
+			isHided = true
+func _on_HidingSpot_body_entered(body):
+	canHide = true
+	
+func _on_HidingSpot_body_exited(body):
+	canHide = false

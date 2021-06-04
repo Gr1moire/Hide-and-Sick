@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/princess_walking.png-b6e27641a02b2ce744f7a4be3c54feb5.stex"
+path="res://.import/Keyboard Prompts.png-79240cc1765b2437c1db8e6b23bf1658.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/princess_walking.png"
-dest_files=[ "res://.import/princess_walking.png-b6e27641a02b2ce744f7a4be3c54feb5.stex" ]
+source_file="res://player/Keyboard Prompts.png"
+dest_files=[ "res://.import/Keyboard Prompts.png-79240cc1765b2437c1db8e6b23bf1658.stex" ]
 
 [params]
 
