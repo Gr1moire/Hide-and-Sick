@@ -1,0 +1,178 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/common/assets/DetailTiles.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/common/assets/GroundTiles.tres" type="TileSet" id=2]
+[ext_resource path="res://scenes/common/DarkLight.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player/princess_walking.png" type="Texture" id=4]
+[ext_resource path="res://scenes/common/scripts/Torch.gd" type="Script" id=5]
+[ext_resource path="res://player/light.png" type="Texture" id=6]
+[ext_resource path="res://cinematic/getBackToYourBed.gd" type="Script" id=7]
+[ext_resource path="res://cinematic/FadeToBlack.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "animation"
+length = 2.9
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 8, 9, 10, 11, 8, 9, 10, 8, 4, 5, 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 312, 88 ), Vector2( 296, 88 ), Vector2( 280, 88 ), Vector2( 264, 88 ), Vector2( 248, 88 ), Vector2( 232, 88 ), Vector2( 216, 88 ), Vector2( 200, 88 ), Vector2( 184, 88 ), Vector2( 168, 88 ), Vector2( 152, 88 ), Vector2( 136, 88 ), Vector2( 136, 88 ), Vector2( 136, 80 ), Vector2( 136, 72 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "launch_fade"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "animation"
+length = 2.9
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 8, 9, 10, 11, 8, 9, 10, 8, 4, 5, 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 296, 88 ), Vector2( 280, 88 ), Vector2( 264, 88 ), Vector2( 248, 88 ), Vector2( 232, 88 ), Vector2( 216, 88 ), Vector2( 200, 88 ), Vector2( 184, 88 ), Vector2( 168, 88 ), Vector2( 152, 88 ), Vector2( 136, 88 ), Vector2( 120, 88 ), Vector2( 120, 88 ), Vector2( 120, 80 ), Vector2( 120, 72 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "animation"
+length = 2.9
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 8, 9, 10, 11, 8, 9, 10, 8, 4, 5, 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 280, 88 ), Vector2( 264, 88 ), Vector2( 248, 88 ), Vector2( 232, 88 ), Vector2( 216, 88 ), Vector2( 200, 88 ), Vector2( 184, 88 ), Vector2( 168, 88 ), Vector2( 152, 88 ), Vector2( 136, 88 ), Vector2( 120, 88 ), Vector2( 104, 88 ), Vector2( 104, 88 ), Vector2( 104, 80 ), Vector2( 104, 72 ) ]
+}
+
+[node name="getBackToYourBed" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="Map" type="StaticBody2D" parent="."]
+
+[node name="DarkLight" parent="Map" instance=ExtResource( 3 )]
+visible = true
+
+[node name="Ground" type="TileMap" parent="Map"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -1, 26, 65539, -65536, 26, 65539, -65535, 26, 65539, -65534, 26, 65539, -65533, 26, 65539, -65532, 26, 65539, -65531, 26, 65539, -65530, 26, 65539, -65529, 26, 65539, -65528, 26, 65539, -65527, 26, 65539, -65526, 26, 65539, -65525, 26, 65539, -65524, 26, 65539, -65523, 26, 65539, -65522, 26, 65539, -65521, 26, 65539, -65520, 26, 65539, -65519, 26, 65539, -65518, 26, 65539, -65517, 26, 65539, -65516, 26, 65539, -65515, 26, 65539, 65535, 26, 65539, 0, 29, 0, 1, 29, 1, 2, 29, 1, 3, 29, 1, 4, 29, 1, 5, 29, 1, 6, 29, 1, 7, 29, 1, 8, 29, 1, 9, 29, 1, 10, 29, 1, 11, 29, 1, 12, 29, 1, 13, 29, 1, 14, 29, 1, 15, 29, 1, 16, 29, 1, 17, 29, 1, 18, 29, 1, 19, 29, 1, 20, 29, 2, 21, 26, 65539, 131071, 26, 65539, 65536, 26, 196609, 65537, 26, 196611, 65538, 26, 196610, 65539, 26, 196610, 65540, 26, 196610, 65541, 26, 196611, 65542, 26, 196611, 65543, 26, 196610, 65544, 26, 196610, 65545, 26, 196610, 65546, 26, 196610, 65547, 26, 196610, 65548, 26, 196611, 65549, 26, 196610, 65550, 26, 196610, 65551, 26, 196611, 65552, 26, 196610, 65553, 26, 196611, 65554, 26, 196610, 65555, 26, 196611, 65556, 26, 196612, 65557, 26, 65539, 196607, 26, 65539, 131072, 26, 262145, 131073, 26, 262146, 131074, 26, 262146, 131075, 26, 262146, 131076, 26, 262147, 131077, 26, 262146, 131078, 26, 262147, 131079, 26, 262146, 131080, 26, 262146, 131081, 26, 262146, 131082, 26, 262146, 131083, 26, 262146, 131084, 26, 262146, 131085, 26, 262146, 131086, 26, 262146, 131087, 26, 262147, 131088, 26, 262146, 131089, 26, 262146, 131090, 26, 262146, 131091, 26, 262146, 131092, 26, 262148, 131093, 26, 65539, 262143, 26, 65539, 196608, 26, 327681, 196609, 26, 327683, 196610, 26, 327682, 196611, 26, 327682, 196612, 26, 327682, 196613, 26, 327683, 196614, 26, 327682, 196615, 26, 327682, 196616, 26, 327683, 196617, 26, 327682, 196618, 26, 327682, 196619, 26, 327683, 196620, 26, 327682, 196621, 26, 327682, 196622, 26, 327682, 196623, 26, 327682, 196624, 26, 327683, 196625, 26, 327682, 196626, 26, 327683, 196627, 26, 327683, 196628, 26, 327684, 196629, 26, 65539, 327679, 26, 65539, 262144, 14, 0, 262145, 14, 0, 262146, 14, 65536, 262147, 14, 65536, 262148, 14, 65536, 262149, 14, 65536, 262150, 14, 65536, 262151, 14, 65536, 262152, 14, 65536, 262153, 14, 65536, 262154, 14, 65536, 262155, 14, 65536, 262156, 14, 0, 262157, 14, 0, 262158, 14, 0, 262159, 14, 0, 262160, 14, 0, 262161, 14, 0, 262162, 14, 0, 262163, 14, 0, 262164, 14, 0, 262165, 26, 65539, 393215, 26, 65539, 327680, 14, 65536, 327681, 14, 65536, 327682, 14, 65536, 327683, 14, 65536, 327684, 14, 65536, 327685, 14, 65536, 327686, 14, 65536, 327687, 14, 65536, 327688, 14, 65536, 327689, 14, 65536, 327690, 14, 65536, 327691, 14, 65536, 327692, 14, 65536, 327693, 14, 65536, 327694, 14, 65536, 327695, 14, 65536, 327696, 14, 65536, 327697, 14, 65536, 327698, 14, 65536, 327699, 14, 65536, 327700, 14, 65536, 327701, 26, 65539, 458751, 26, 65539, 393216, 14, 65536, 393217, 14, 65536, 393218, 14, 65536, 393219, 14, 65536, 393220, 14, 65536, 393221, 14, 65536, 393222, 14, 65536, 393223, 14, 65536, 393224, 14, 65536, 393225, 14, 65536, 393226, 14, 65536, 393227, 14, 65536, 393228, 14, 65536, 393229, 14, 65536, 393230, 14, 65536, 393231, 14, 65536, 393232, 14, 65536, 393233, 14, 65536, 393234, 14, 65536, 393235, 14, 65536, 393236, 14, 65536, 393237, 26, 65539, 524287, 26, 65539, 458752, 29, 0, 458753, 29, 1, 458754, 29, 1, 458755, 29, 1, 458756, 29, 1, 458757, 29, 1, 458758, 29, 1, 458759, 29, 1, 458760, 29, 1, 458761, 29, 1, 458762, 29, 1, 458763, 29, 1, 458764, 29, 1, 458765, 29, 1, 458766, 29, 1, 458767, 29, 1, 458768, 29, 1, 458769, 29, 1, 458770, 29, 1, 458771, 29, 1, 458772, 29, 2, 458773, 26, 65539, 589823, 26, 65539, 524288, 26, 196609, 524289, 26, 196611, 524290, 26, 196610, 524291, 26, 196610, 524292, 26, 196611, 524293, 26, 196610, 524294, 26, 196610, 524295, 26, 196610, 524296, 26, 196610, 524297, 26, 196611, 524298, 26, 196610, 524299, 26, 196610, 524300, 26, 196610, 524301, 26, 196610, 524302, 26, 196610, 524303, 26, 196611, 524304, 26, 196610, 524305, 26, 196610, 524306, 26, 196610, 524307, 26, 196611, 524308, 26, 196612, 524309, 26, 65539, 655359, 26, 65539, 589824, 26, 262145, 589825, 26, 262146, 589826, 26, 262146, 589827, 26, 262147, 589828, 26, 262146, 589829, 26, 262146, 589830, 26, 262146, 589831, 26, 262146, 589832, 26, 262146, 589833, 26, 262146, 589834, 26, 262147, 589835, 26, 262146, 589836, 26, 262146, 589837, 26, 262146, 589838, 26, 262146, 589839, 26, 262146, 589840, 26, 262146, 589841, 26, 262147, 589842, 26, 262146, 589843, 26, 262146, 589844, 26, 262148, 589845, 26, 65539, 720895, 26, 65539, 655360, 26, 327681, 655361, 26, 327682, 655362, 26, 327682, 655363, 26, 327682, 655364, 26, 327682, 655365, 26, 327682, 655366, 26, 327682, 655367, 26, 327682, 655368, 26, 327682, 655369, 26, 327682, 655370, 26, 327682, 655371, 26, 327682, 655372, 26, 327682, 655373, 26, 327682, 655374, 26, 327682, 655375, 26, 327682, 655376, 26, 327682, 655377, 26, 327682, 655378, 26, 327682, 655379, 26, 327683, 655380, 26, 327684, 655381, 26, 65539, 786431, 26, 65539, 720896, 26, 65539, 720897, 26, 65539, 720898, 26, 65539, 720899, 26, 65539, 720900, 26, 65539, 720901, 26, 65539, 720902, 26, 65539, 720903, 26, 65539, 720904, 26, 65539, 720905, 26, 65539, 720906, 26, 65539, 720907, 26, 65539, 720908, 26, 65539, 720909, 26, 65539, 720910, 26, 65539, 720911, 26, 65539, 720912, 26, 65539, 720913, 26, 65539, 720914, 26, 65539, 720915, 26, 65539, 720916, 26, 65539, 720917, 26, 65539 )
+
+[node name="Details" type="TileMap" parent="Map"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 65537, -1073741817, 0, 65546, -1073741817, 0, 65555, -1073741817, 0, 131072, 1, 0, 131075, 1, 0, 131078, 1, 0, 131081, 1, 0, 131084, 1, 0, 131087, 1, 0, 131090, 1, 0, 262144, -1073741786, 0, 262147, 68, 0, 262149, 68, 0, 262151, -1073741786, 0, 262155, 68, 0, 262162, 68, 0, 262163, -1073741819, 0, 327683, -1073741819, 0, 327691, -1073741786, 0, 393217, -1073741819, 0, 393220, -1073741786, 0, 393224, -1073741819, 0, 393230, -1073741786, 0 )
+
+[node name="Personnage" type="StaticBody2D" parent="."]
+position = Vector2( 106.908, 44.5449 )
+
+[node name="Last Guard" type="AnimationPlayer" parent="Personnage"]
+root_node = NodePath("Sprite")
+anims/animation = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Personnage/Last Guard"]
+position = Vector2( 192, 88 )
+texture = ExtResource( 4 )
+hframes = 16
+frame = 11
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Prisoner" type="AnimationPlayer" parent="Personnage"]
+root_node = NodePath("Sprite")
+anims/animation = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Personnage/Prisoner"]
+position = Vector2( 296, 88 )
+texture = ExtResource( 4 )
+hframes = 16
+frame = 8
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Light2D" type="Light2D" parent="Personnage/Prisoner/Sprite"]
+texture = ExtResource( 6 )
+texture_scale = 0.15
+script = ExtResource( 5 )
+
+[node name="First Guard" type="AnimationPlayer" parent="Personnage"]
+root_node = NodePath("Sprite")
+anims/animation = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Personnage/First Guard"]
+position = Vector2( 280, 88 )
+texture = ExtResource( 4 )
+hframes = 16
+frame = 8
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="FadeToBlack" parent="." instance=ExtResource( 8 )]
+next_scene = "res://scenes/common/level1/Level1.tscn"
