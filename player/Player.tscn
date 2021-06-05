@@ -202,17 +202,17 @@ start_node = "Idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
-[sub_resource type="AtlasTexture" id=25]
+[sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 27, 11 )
 
-[sub_resource type="AtlasTexture" id=26]
+[sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 3 )
 region = Rect2( 27, 0, 27, 11 )
 
-[sub_resource type="SpriteFrames" id=24]
+[sub_resource type="SpriteFrames" id=26]
 animations = [ {
-"frames": [ SubResource( 25 ), SubResource( 26 ) ],
+"frames": [ SubResource( 24 ), SubResource( 25 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -255,7 +255,8 @@ parameters/Walk/blend_position = Vector2( 0.0519782, -0.11547 )
 [node name="PressSpaceAnimation" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 0, -17.3625 )
-frames = SubResource( 24 )
+frames = SubResource( 26 )
+frame = 1
 playing = true
 
 [node name="LockerSound" type="AudioStreamPlayer" parent="."]
