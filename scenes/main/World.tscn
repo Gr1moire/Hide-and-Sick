@@ -5454,7 +5454,7 @@ format = 1
 tile_data = PoolIntArray( 131079, 11, 0, 393252, 55, 1, 524282, 31, 0, 524284, -1610612724, 0, 458756, 31, 0, 458760, -1610612704, 0, 589816, -1610612725, 0, 589820, 0, 0, 524292, -1610612725, 0, 524300, 25, 0, 524306, 9, 0, 524307, 0, 0, 524309, -1610612732, 0, 524317, 6, 65537, 655359, 23, 0, 589835, 44, 0, 589839, 14, 0, 589840, 15, 0, 589841, 16, 0, 589850, 47, 0, 589856, 51, 0, 589857, 13, 0, 720891, 6, 65537, 655364, 41, 0, 655380, -1610612729, 0, 655389, 6, 0, 655391, -1610612704, 0, 655392, 13, 1, 655399, -1610612724, 0, 786427, 10, 1, 720907, 11, 0, 851960, 10, 1, 851963, 6, 1, 786434, -1610612704, 0, 786446, 38, 0, 786462, 41, 0, 786464, 40, 0, 851984, -1610612731, 0, 851988, 41, 2, 917519, 38, 1, 917520, 38, 0, 917523, 38, 65536, 917529, -1610612704, 0, 1179645, 50, 0, 1376254, 38, 65537, 1310734, 55, 1, 1441789, 38, 65537, 1507320, 46, 0, 1507327, 16, 0, 1572856, 2, 0, 1572858, -1610612725, 0, 1638391, 17, 0, 1638394, 44, 0, 1638398, 38, 65537, 1638410, 46, 0, 1638415, -1610612705, 0, 1638427, -1073741817, 0, 1769463, 33, 0, 1703937, -1610612732, 0, 1703942, 1, 0, 1703948, 51, 0, 1703954, -1073741811, 0, 1703955, 0, 0, 1703958, -1073741813, 0, 1703967, 0, 0, 1835004, 38, 65537, 1835005, 38, 1, 1769473, 30, 0, 1769477, 45, 0, 1769482, 48, 0, 1769497, 53, 0, 1769498, 23, 0, 1769500, 49, 0, 1900540, 38, 0, 1900543, 55, 1, 1835015, 1610612774, 65536, 1835019, -1610612704, 0, 1835021, 7, 0, 1835040, 13, 1, 1966077, 38, 1 )
 
 [node name="LockerFront" type="Sprite" parent="StaticBody2D/Ground"]
-position = Vector2( 416, 144 )
+position = Vector2( 416, 143.685 )
 texture = ExtResource( 8 )
 
 [node name="LockersSide" type="Sprite" parent="StaticBody2D/Ground"]
@@ -5462,7 +5462,7 @@ position = Vector2( 235.143, 330.891 )
 texture = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -37.5611, 176.834 )
+position = Vector2( -37.9357, 177.209 )
 collision_mask = 21
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -5473,13 +5473,11 @@ limit_right = 640
 limit_bottom = 512
 
 [node name="HidingSpotLockersBack" parent="." instance=ExtResource( 4 )]
+position = Vector2( 420.233, 231.035 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = -19.184
 autoplay = true
-
-[connection signal="body_entered" from="HidingSpotLockersBack/LockersBackSprite/HidingSpot2" to="Player" method="_on_HidingSpot2_body_entered"]
-[connection signal="body_exited" from="HidingSpotLockersBack/LockersBackSprite/HidingSpot2" to="Player" method="_on_HidingSpot2_body_exited"]
 
 [editable path="HidingSpotLockersBack"]
