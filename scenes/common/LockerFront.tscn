@@ -8,17 +8,21 @@ extents = Vector2( 48.7631, 10 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 48.3426, 19.6251 )
 
-[node name="HidingSpotLockerFront" type="StaticBody2D"]
+[node name="YSort" type="YSort"]
 
-[node name="LockerFrontSprite" type="Sprite" parent="."]
+[node name="HidingSpotLockerFront" type="StaticBody2D" parent="."]
+
+[node name="LockerFrontSprite" type="Sprite" parent="HidingSpotLockerFront"]
+position = Vector2( -0.639565, 23.2606 )
 texture = ExtResource( 1 )
+offset = Vector2( 0.639565, -23.2606 )
 
-[node name="HidingSpot" type="Area2D" parent="LockerFrontSprite"]
+[node name="HidingSpot" type="Area2D" parent="HidingSpotLockerFront/LockerFrontSprite"]
 
-[node name="EventZone" type="CollisionShape2D" parent="LockerFrontSprite/HidingSpot"]
-position = Vector2( 1.6818, 19.5508 )
+[node name="EventZone" type="CollisionShape2D" parent="HidingSpotLockerFront/LockerFrontSprite/HidingSpot"]
+position = Vector2( 2.52269, -1.89205 )
 shape = SubResource( 1 )
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="HidingSpotLockerFront"]
 position = Vector2( 1.26134, 2.73291 )
 shape = SubResource( 2 )

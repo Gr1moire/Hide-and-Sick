@@ -54,18 +54,18 @@ func move():
 
 func _input(event):
 	if canHide:
-		if Input.is_action_pressed("hide") && !isHided:
+		if Input.is_action_just_pressed("hide") && !isHided:
 			isHided = true
 			visible = false
 			get_child(5).play()
-		elif Input.is_action_pressed("hide") && isHided:
+		elif Input.is_action_just_pressed("hide") && isHided:
 			isHided = false
 			visible = true
 
-func _on_HidingSpot2_body_entered(body):
+func _on_HidingSpot_body_entered(body):
 	canHide = true
 	get_child(4).visible = true
 
-func _on_HidingSpot2_body_exited(body):
+func _on_HidingSpot_body_exited(body):
 	canHide = false
 	get_child(4).visible = false
