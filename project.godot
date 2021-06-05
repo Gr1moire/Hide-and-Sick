@@ -65,6 +65,10 @@ hide={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_5="detect_player"
+
 [physics]
 
 common/enable_pause_aware_picking=true

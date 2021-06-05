@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://player/light.png" type="Texture" id=1]
 [ext_resource path="res://scenes/common/scripts/Torch.gd" type="Script" id=2]
@@ -199,13 +199,15 @@ start_node = "Idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
+[sub_resource type="CircleShape2D" id=24]
+radius = 72.0
+
 [node name="Enemy" type="KinematicBody2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 offset = Vector2( 0.681637, -0.283983 )
 hframes = 8
-frame = 6
 region_enabled = true
 region_rect = Rect2( -1.56696, 6.00688, 145.383, 27.2875 )
 
@@ -241,3 +243,9 @@ color = Color( 1, 0.992157, 0.988235, 0.815686 )
 energy = 0.99
 shadow_enabled = true
 script = ExtResource( 2 )
+
+[node name="DetectionZone" type="Area2D" parent="."]
+collision_mask = 16
+
+[node name="Zone" type="CollisionShape2D" parent="DetectionZone"]
+shape = SubResource( 24 )
