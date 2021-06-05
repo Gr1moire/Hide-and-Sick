@@ -67,8 +67,10 @@ script = ExtResource( 1 )
 anims/fade = SubResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 320.0
-margin_bottom = 184.0
+margin_left = -3760.0
+margin_top = -2232.0
+margin_right = 3664.0
+margin_bottom = 2696.0
 color = Color( 0, 0, 0, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
