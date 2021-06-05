@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/horror_loop.mp3-7d8a229a7cdf116e9273102639dc2021.mp3str"
+
+[deps]
+
+source_file="res://scenes/level1/assets/horror_loop.mp3"
+dest_files=[ "res://.import/horror_loop.mp3-7d8a229a7cdf116e9273102639dc2021.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
