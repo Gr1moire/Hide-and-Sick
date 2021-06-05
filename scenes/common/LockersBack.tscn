@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/common/assets/LockerBackWall.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 44.5997, 7.02861 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 45.375, 5.11523 )
+
+[node name="HidingSpotLockersBack" type="StaticBody2D"]
+
+[node name="LockersBackSprite" type="Sprite" parent="."]
+position = Vector2( 366, 230.67 )
+texture = ExtResource( 1 )
+
+[node name="HidingSpot2" type="Area2D" parent="LockersBackSprite"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="EventZone" type="CollisionShape2D" parent="LockersBackSprite/HidingSpot2"]
+position = Vector2( 0, -3.67999 )
+shape = SubResource( 1 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2( 366, 234.865 )
+shape = SubResource( 2 )

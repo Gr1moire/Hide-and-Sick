@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export var ACCELERATION = 750
-export var MAX_SPEED = 100
+export var MAX_SPEED = 50
 export var ROLL_SPEED = 130
 export var FRICTION = 700
 
@@ -17,10 +17,14 @@ onready var animationState = animationTree.get("parameters/playback")
 
 var velocity = Vector2.ZERO
 var state = MOVE
+var isHided = false
+var canHide = false
+
 
 func _ready():
 	randomize()
 	animationTree.active = true
+	get_child(4).visible = false
 
 func _physics_process(delta):
 			
@@ -42,21 +46,26 @@ func move_state(delta):
 	else:
 		animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)    
-		
-	move()
+	if !isHided:
+		move()
 
 func move():
 	velocity = move_and_slide(velocity)
 
-var isHided = false
-var canHide = false
-
 func _input(event):
 	if canHide:
-		if Input.is_action_pressed("hide"):
+		if Input.is_action_pressed("hide") && !isHided:
 			isHided = true
-func _on_HidingSpot_body_entered(body):
+			visible = false
+			get_child(5).play()
+		elif Input.is_action_pressed("hide") && isHided:
+			isHided = false
+			visible = true
+
+func _on_HidingSpot2_body_entered(body):
 	canHide = true
-	
-func _on_HidingSpot_body_exited(body):
+	get_child(4).visible = true
+
+func _on_HidingSpot2_body_exited(body):
 	canHide = false
+	get_child(4).visible = false
