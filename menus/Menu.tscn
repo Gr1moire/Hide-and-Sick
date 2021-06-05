@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://menus/TextureButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://menus/Menu.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://scenes/common/assets/TileA5_PHC_Interior-Hospital.png" type="Texture" id=5]
 [ext_resource path="res://scenes/common/assets/TileB_PHC_Interior-Hospital.png" type="Texture" id=6]
 [ext_resource path="res://scenes/common/assets/TileC_PHC_Interior-Hospital-Alt.png" type="Texture" id=7]
+[ext_resource path="res://player/light.png" type="Texture" id=8]
+[ext_resource path="res://scenes/common/scripts/Torch.gd" type="Script" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "TileA4_PHC_Interior-Hospital.png 0"
@@ -146,6 +148,9 @@ font_data = ExtResource( 4 )
 [node name="Menu" type="Node"]
 script = ExtResource( 2 )
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.15625, 0.140991, 0.140991, 1 )
+
 [node name="First Layer" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
@@ -167,7 +172,38 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 131073, 0, 262147, 131074, 0, 327689, 131075, 0, 327691, 131076, 0, 262147, 131077, 0, 327689, 131078, 0, 327691, 131085, 1, 262147, 131086, 1, 327690, 131087, 1, 524294, 131088, 1, 262147, 131089, 1, 327690, 131090, 1, 524295, 196609, 0, 327683, 196610, 0, 393225, 196611, 0, 393227, 196612, 0, 327683, 196613, 0, 393225, 196614, 0, 393227, 196621, 1, 327683, 196622, 1, 393226, 196623, 1, 589831, 196624, 1, 327683, 196625, 1, 393226, 196626, 1, 589831, 262146, 0, 458761, 262149, 0, 458761, 262151, 0, 131076, 262152, 0, 131077, 262153, 0, 131078, 262154, 1, 131078, 262155, 1, 131077, 262156, 1, 131079, 262158, 1, 458762, 262161, 1, 458762, 327687, 0, 196612, 327688, 0, 196613, 327689, 0, 196614, 327690, 536870913, 196614, 327691, 536870913, 196613, 327692, 536870913, 196615, 327698, 1, 983051, 393223, 0, 262148, 393224, 0, 262150, 393225, 0, 262148, 393226, 1, 262151, 393227, 1, 262150, 393228, 1, 262151, 458753, 0, 327684, 458767, 1, 917515, 458768, 1, 983053, 458770, 1, 327685, 524289, 0, 393220, 524296, 1, 917515, 524297, 1, 917516, 524298, 1, 917516, 524299, 1, 983053, 524306, 1, 393221, 589825, 0, 393220, 589832, 1, 983052, 589833, 1, 917516, 589834, 1, 917516, 589835, 536870913, 917515, 589842, 1, 393221, 655361, 0, 458756, 655377, 1, 983051, 655378, 1, 458757, 720897, 0, 524292, 720909, 1, 983052, 720910, 1, 917517, 720914, 1, 524293 )
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Light2D" type="Light2D" parent="StaticBody2D"]
+position = Vector2( 64, 80 )
+scale = Vector2( 0.8125, 0.8125 )
+texture = ExtResource( 8 )
+texture_scale = 0.15
+
+[node name="Light2D2" type="Light2D" parent="StaticBody2D"]
+position = Vector2( 256, 80 )
+scale = Vector2( 0.760417, 0.760417 )
+texture = ExtResource( 8 )
+texture_scale = 0.15
+energy = 1.2
+script = ExtResource( 9 )
+
+[node name="Light2D3" type="Light2D" parent="StaticBody2D"]
+position = Vector2( 160, 40 )
+scale = Vector2( 0.65625, 0.65625 )
+texture = ExtResource( 8 )
+texture_scale = 0.15
+energy = 1.2
+
+[node name="Light2D4" type="Light2D" parent="StaticBody2D"]
+position = Vector2( 160, 136 )
+scale = Vector2( 0.65625, 0.65625 )
+texture = ExtResource( 8 )
+texture_scale = 0.15
+energy = 1.2
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+light_mask = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -199,6 +235,7 @@ alignment = 1
 margin_top = 28.0
 margin_bottom = 43.0
 focus_neighbour_bottom = NodePath("../Exit")
+focus_mode = 2
 text = "Start"
 arrow_margin_from_center = 35
 
