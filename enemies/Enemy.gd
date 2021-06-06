@@ -11,6 +11,7 @@ const ACCELERATION = 300
 const FRICTION = 100
 
 onready var detection_zone = $DetectionZone
+onready var touch_player = $TouchPlayer
 onready var player = $"../Player"
 #onready var line = $Line2D
 
@@ -41,7 +42,9 @@ func _ready():
 
 func _physics_process(delta):
 	chase_player(delta)
-	pass
+	var test = touch_player.touched_player
+	if test:
+		get_tree().change_scene("res://cinematic/getBackToYourBed.tscn")
 	
 func _process(delta):
 	AnimationLoop()

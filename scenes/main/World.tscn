@@ -86,9 +86,6 @@ collision_mask = 21
 [node name="AnimationTree" parent="YSort/Player" index="3"]
 parameters/playback = SubResource( 5 )
 
-[node name="PressSpaceAnimation" parent="YSort/Player" index="4"]
-frame = 1
-
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 current = true
 limit_left = -144
