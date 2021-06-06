@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://scenes/common/assets/DetailTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/assets/GroundTiles.tres" type="TileSet" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://scenes/common/LockersBack.tscn" type="PackedScene" id=10]
 [ext_resource path="res://player/SpaceButtonAnimation.png" type="Texture" id=11]
 [ext_resource path="res://scenes/common/Portal.tscn" type="PackedScene" id=12]
+[ext_resource path="res://voices/Les_casiers.mp3" type="AudioStream" id=13]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 1.76161
@@ -423,11 +424,14 @@ start_node = "Idle"
 [sub_resource type="CircleShape2D" id=51]
 radius = 72.0
 
+[sub_resource type="RectangleShape2D" id=52]
+
 [node name="Level1" type="Node2D"]
 
 [node name="Map" type="StaticBody2D" parent="."]
 
 [node name="DarkLight" parent="Map" instance=ExtResource( 4 )]
+visible = true
 
 [node name="Navigation2D" type="Navigation2D" parent="Map" groups=[
 "LevelNaviguation",
@@ -447,7 +451,7 @@ tile_data = PoolIntArray( -196575, 25, 0, -131056, -1073741752, 0, -131054, 46, 
 
 [node name="BacgrouondMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-volume_db = -13.126
+volume_db = -25.242
 pitch_scale = 0.57
 autoplay = true
 
@@ -487,6 +491,7 @@ parameters/playback = SubResource( 23 )
 
 [node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
 frames = SubResource( 26 )
+frame = 1
 
 [node name="Zone" parent="Entities/Player/DetectionZone" index="0"]
 shape = SubResource( 27 )
@@ -543,6 +548,18 @@ autostart = true
 position = Vector2( 680, 288 )
 next_scene_path = "res://scenes/level2/Level2.tscn"
 
+[node name="Voices" type="Node2D" parent="."]
+
+[node name="Voice1" type="Area2D" parent="Voices"]
+
+[node name="Voice1Audio" type="AudioStreamPlayer" parent="Voices/Voice1"]
+stream = ExtResource( 13 )
+volume_db = -3.03
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Voices/Voice1"]
+position = Vector2( 504, 96 )
+shape = SubResource( 52 )
+
 [connection signal="body_entered" from="Entities/LOCKER_FRONT/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
 [connection signal="body_exited" from="Entities/LOCKER_FRONT/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
 [connection signal="body_entered" from="Entities/HidingSpotLockersBack/LockersBackSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
@@ -552,6 +569,8 @@ next_scene_path = "res://scenes/level2/Level2.tscn"
 [connection signal="timeout" from="Entities/Enemy/Timer" to="Entities/Enemy" method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Portal" to="Entities/Player" method="_on_Portal_body_entered"]
 [connection signal="body_exited" from="Portal" to="Entities/Player" method="_on_Portal_body_exited"]
+[connection signal="body_entered" from="Voices/Voice1" to="Entities/Player" method="_on_Voice1_body_entered"]
+[connection signal="finished" from="Voices/Voice1/Voice1Audio" to="Entities/Player" method="_on_Voice1Audio_finished"]
 
 [editable path="Entities/LOCKER_FRONT"]
 [editable path="Entities/HidingSpotLockersBack"]

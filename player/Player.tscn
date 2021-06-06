@@ -266,6 +266,7 @@ playing = true
 [node name="LockerSound" type="AudioStreamPlayer" parent="."]
 pause_mode = 1
 stream = ExtResource( 4 )
+volume_db = -6.058
 
 [node name="FlickeringLight" type="Light2D" parent="."]
 position = Vector2( -0.468224, -4.77598 )
