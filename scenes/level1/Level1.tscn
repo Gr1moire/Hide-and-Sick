@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://scenes/common/assets/DetailTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/assets/GroundTiles.tres" type="TileSet" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://scenes/common/DarkLight.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/level1/assets/horror_loop.mp3" type="AudioStream" id=5]
 [ext_resource path="res://enemies/Enemy1.tscn" type="PackedScene" id=6]
-[ext_resource path="res://enemies/Enemy.gd" type="Script" id=7]
 [ext_resource path="res://scenes/main/DetectionZone.gd" type="Script" id=8]
 [ext_resource path="res://scenes/common/LockerFront.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/common/LockersBack.tscn" type="PackedScene" id=10]
@@ -425,7 +424,7 @@ start_node = "Idle"
 [sub_resource type="CircleShape2D" id=51]
 radius = 72.0
 
-[sub_resource type="GDScript" id=53]
+[sub_resource type="GDScript" id=52]
 script/source = "extends Node2D
 
 export(String, FILE) var next_scene = \"\"
@@ -435,7 +434,7 @@ func end_fade():
 		get_tree().change_scene(next_scene)
 "
 
-[sub_resource type="RectangleShape2D" id=52]
+[sub_resource type="RectangleShape2D" id=53]
 
 [node name="Level1" type="Node2D"]
 
@@ -502,7 +501,6 @@ parameters/playback = SubResource( 23 )
 
 [node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
 frames = SubResource( 26 )
-frame = 1
 
 [node name="Zone" parent="Entities/Player/DetectionZone" index="0"]
 shape = SubResource( 27 )
@@ -517,7 +515,7 @@ limit_bottom = 512
 
 [node name="Enemy" parent="Entities" instance=ExtResource( 6 )]
 position = Vector2( 410.336, 30.5293 )
-script = ExtResource( 7 )
+playerPath = NodePath("../Player")
 actual_dest = Vector2( 420, 30 )
 dest = Vector2( 150, 130 )
 dest2 = Vector2( 420, 265 )
@@ -546,8 +544,6 @@ script = ExtResource( 8 )
 [node name="Zone" parent="Entities/Enemy/DetectionZone" index="0"]
 shape = SubResource( 51 )
 
-[node name="Navigation2D" type="Navigation2D" parent="Entities/Enemy"]
-
 [node name="Line2D" type="Line2D" parent="Entities/Enemy"]
 width = 2.0
 
@@ -561,7 +557,7 @@ next_scene_path = "res://scenes/level2/Level2.tscn"
 
 [node name="FadeToBlack" parent="Portal" instance=ExtResource( 14 )]
 position = Vector2( -297.227, -370.897 )
-script = SubResource( 53 )
+script = SubResource( 52 )
 next_scene = "res://scenes/level2/Level2.tscn"
 
 [node name="Voices" type="Node2D" parent="."]
@@ -574,7 +570,7 @@ volume_db = -3.03
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Voices/Voice1"]
 position = Vector2( 504, 96 )
-shape = SubResource( 52 )
+shape = SubResource( 53 )
 
 [connection signal="body_entered" from="Entities/LOCKER_FRONT/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
 [connection signal="body_exited" from="Entities/LOCKER_FRONT/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
@@ -582,7 +578,6 @@ shape = SubResource( 52 )
 [connection signal="body_exited" from="Entities/HidingSpotLockersBack/LockersBackSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
 [connection signal="body_entered" from="Entities/Enemy/DetectionZone" to="Entities/Enemy/DetectionZone" method="_on_DetectionZone_body_entered"]
 [connection signal="body_exited" from="Entities/Enemy/DetectionZone" to="Entities/Enemy/DetectionZone" method="_on_DetectionZone_body_exited"]
-[connection signal="timeout" from="Entities/Enemy/Timer" to="Entities/Enemy" method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Portal" to="Entities/Player" method="_on_Portal_body_entered"]
 [connection signal="body_exited" from="Portal" to="Entities/Player" method="_on_Portal_body_exited"]
 [connection signal="body_entered" from="Voices/Voice1" to="Entities/Player" method="_on_Voice1_body_entered"]

@@ -114,6 +114,7 @@ script = ExtResource( 7 )
 [node name="Map" type="StaticBody2D" parent="."]
 
 [node name="DarkLight" parent="Map" instance=ExtResource( 3 )]
+visible = true
 
 [node name="Ground" type="TileMap" parent="Map"]
 tile_set = ExtResource( 2 )

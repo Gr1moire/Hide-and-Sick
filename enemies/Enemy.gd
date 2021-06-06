@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-onready var remote_transform = get_node("../../EnemyPath/PathFollow2D")
+#onready var remote_transform = get_node("../../EnemyPath/PathFollow2D")
 
 var speed = 0.1
 var move_direction = 0
@@ -11,16 +11,20 @@ const ACCELERATION = 300
 const FRICTION = 100
 
 onready var detection_zone = $DetectionZone
+
+export(NodePath) var playerPath
+onready var player = get_node(playerPath)
+var playerDetected := false
 onready var touch_player = $TouchPlayer
-onready var player = $"../Player"
 #onready var line = $Line2D
 
 var velocity = Vector2.DOWN
 
 const SPEED = 40
 var path: Array = []
+#onready var levelNaviguation: Navigation2D = $Navigation2D
 var levelNaviguation: Navigation2D = null
-var plr = null
+
 
 export(Vector2) var actual_dest
 export(Vector2) var dest
@@ -37,8 +41,7 @@ func _ready():
 	var tree = get_tree()
 	if tree.has_group("LevelNaviguation"):
 		levelNaviguation = tree.get_nodes_in_group("LevelNaviguation")[0]
-	if tree.has_group("Player"):
-		plr = tree.get_nodes_in_group("Player")[0]
+		assert(levelNaviguation)
 
 func _physics_process(delta):
 	chase_player(delta)
@@ -52,9 +55,8 @@ func _process(delta):
 #########################
 
 func chase_player(delta):
-	var play = detection_zone.player
-	if play && !PlayerVariable.isHided:
-		accelerate_towards_point(play.global_position, delta)
+	if playerDetected && !PlayerVariable.isHided:
+		accelerate_towards_point(player.global_position, delta)
 	else:
 		make_path_finding()
 	move()
@@ -83,25 +85,26 @@ func naviguate():
 			path.pop_front()
 
 func generate_path():
-	if levelNaviguation && plr:
+	if levelNaviguation:
 		path = levelNaviguation.get_simple_path(global_position, actual_dest, false)
-		#line.points = path
 
 func _on_Timer_timeout():
+	print(actual_dest)
 	var distance = global_position.distance_to(actual_dest)
 	if distance < 5:
 		index += 1
 		if index == 3:
 			index = 0
 		actual_dest = tab[index]
+		print(index)
 
 #########################
 
-func MovementLoop(delta):
-	var prepos = remote_transform.get_global_position()
-	remote_transform.set_offset(remote_transform.get_offset() + speed + delta / 2)
-	var pos = remote_transform.get_global_position()
-	move_direction = (pos.angle_to_point(prepos) / 3.14) * 180 
+#func MovementLoop(delta):
+#	var prepos = remote_transform.get_global_position()
+#	remote_transform.set_offset(remote_transform.get_offset() + speed + delta / 2)
+#	var pos = remote_transform.get_global_position()
+#	move_direction = (pos.angle_to_point(prepos) / 3.14) * 180 
 
 func AnimationLoop():
 	var animation_direction : String
@@ -126,3 +129,13 @@ func AnimationLoop():
 	get_node("AnimationPlayer").play(animation_direction)
 
 
+
+
+func _on_DetectionZone_body_entered(_body):
+	playerDetected = true
+	print("player")
+
+
+func _on_DetectionZone_body_exited(_body):
+	playerDetected = false
+	print("no player")
