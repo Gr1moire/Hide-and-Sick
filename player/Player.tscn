@@ -8,7 +8,7 @@
 [ext_resource path="res://player/light.png" type="Texture" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 1.76161
+radius = 2.54795
 height = 2.99854
 
 [sub_resource type="Animation" id=2]
@@ -139,51 +139,51 @@ tracks/0/keys = {
 "values": [ 5, 6, 7 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=88]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Idle Down"
 
-[sub_resource type="AnimationNodeAnimation" id=89]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Idle Up"
 
-[sub_resource type="AnimationNodeAnimation" id=90]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "Idle Left"
 
-[sub_resource type="AnimationNodeAnimation" id=91]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "Idle Right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=14]
-blend_point_0/node = SubResource( 88 )
+blend_point_0/node = SubResource( 10 )
 blend_point_0/pos = Vector2( 0, 1.1 )
-blend_point_1/node = SubResource( 89 )
+blend_point_1/node = SubResource( 11 )
 blend_point_1/pos = Vector2( 0, -1.1 )
-blend_point_2/node = SubResource( 90 )
+blend_point_2/node = SubResource( 12 )
 blend_point_2/pos = Vector2( -1, 0 )
-blend_point_3/node = SubResource( 91 )
+blend_point_3/node = SubResource( 13 )
 blend_point_3/pos = Vector2( 1, 0 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=92]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "Walk Left"
 
-[sub_resource type="AnimationNodeAnimation" id=93]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "Walk Right"
 
-[sub_resource type="AnimationNodeAnimation" id=94]
+[sub_resource type="AnimationNodeAnimation" id=17]
 animation = "Walk Down"
 
-[sub_resource type="AnimationNodeAnimation" id=95]
+[sub_resource type="AnimationNodeAnimation" id=18]
 animation = "Walk Up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=19]
-blend_point_0/node = SubResource( 92 )
+blend_point_0/node = SubResource( 15 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 93 )
+blend_point_1/node = SubResource( 16 )
 blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 94 )
+blend_point_2/node = SubResource( 17 )
 blend_point_2/pos = Vector2( 0, 1.1 )
-blend_point_3/node = SubResource( 95 )
+blend_point_3/node = SubResource( 18 )
 blend_point_3/pos = Vector2( 0, -1.1 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
@@ -235,7 +235,7 @@ texture = ExtResource( 1 )
 hframes = 16
 
 [node name="Player Collision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 5.85345 )
+position = Vector2( 0, 14.0005 )
 rotation = -1.5708
 shape = SubResource( 1 )
 
@@ -261,7 +261,6 @@ parameters/Walk/blend_position = Vector2( 0.0519782, -0.11547 )
 visible = false
 position = Vector2( 0, -17.3625 )
 frames = SubResource( 26 )
-frame = 1
 playing = true
 
 [node name="LockerSound" type="AudioStreamPlayer" parent="."]
@@ -269,7 +268,7 @@ pause_mode = 1
 stream = ExtResource( 4 )
 
 [node name="FlickeringLight" type="Light2D" parent="."]
-position = Vector2( 0, -0.00012207 )
+position = Vector2( -0.468224, -4.77598 )
 scale = Vector2( 0.13395, 0.144664 )
 texture = ExtResource( 6 )
 color = Color( 1, 0.992157, 0.988235, 0.8 )
