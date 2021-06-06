@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://scenes/Level3/Walls.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Level3/Roof.tres" type="TileSet" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://enemies/Enemy1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/level2/Level2.gd" type="Script" id=10]
 [ext_resource path="res://scenes/main/DetectionZone.gd" type="Script" id=11]
+[ext_resource path="res://cinematic/FadeToBlack.tscn" type="PackedScene" id=12]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -342,6 +343,16 @@ start_node = "Idle"
 [sub_resource type="CircleShape2D" id=26]
 radius = 72.0
 
+[sub_resource type="GDScript" id=27]
+script/source = "extends Node2D
+
+export(String, FILE) var next_scene = \"\"
+
+func end_fade():
+	if next_scene != \"\":
+		get_tree().change_scene(next_scene)
+"
+
 [node name="Level2" type="Node2D"]
 script = ExtResource( 10 )
 
@@ -455,6 +466,11 @@ next_scene_path = "res://scenes/Level3/Level3.tscn"
 
 [node name="CollisionShape2D" parent="Portal" index="0"]
 position = Vector2( 1.12373, -2.43475 )
+
+[node name="FadeToBlack" parent="Portal" instance=ExtResource( 12 )]
+position = Vector2( -297.227, -370.897 )
+script = SubResource( 27 )
+next_scene = "res://scenes/Level3/Level3.tscn"
 
 [node name="BacgrouondMusic" type="AudioStreamPlayer" parent="."]
 volume_db = -33.32

@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://scenes/common/assets/DetailTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/assets/GroundTiles.tres" type="TileSet" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://player/SpaceButtonAnimation.png" type="Texture" id=11]
 [ext_resource path="res://scenes/common/Portal.tscn" type="PackedScene" id=12]
 [ext_resource path="res://voices/Les_casiers.mp3" type="AudioStream" id=13]
+[ext_resource path="res://cinematic/FadeToBlack.tscn" type="PackedScene" id=14]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 1.76161
@@ -424,6 +425,16 @@ start_node = "Idle"
 [sub_resource type="CircleShape2D" id=51]
 radius = 72.0
 
+[sub_resource type="GDScript" id=53]
+script/source = "extends Node2D
+
+export(String, FILE) var next_scene = \"\"
+
+func end_fade():
+	if next_scene != \"\":
+		get_tree().change_scene(next_scene)
+"
+
 [sub_resource type="RectangleShape2D" id=52]
 
 [node name="Level1" type="Node2D"]
@@ -491,6 +502,7 @@ parameters/playback = SubResource( 23 )
 
 [node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
 frames = SubResource( 26 )
+frame = 1
 
 [node name="Zone" parent="Entities/Player/DetectionZone" index="0"]
 shape = SubResource( 27 )
@@ -546,6 +558,11 @@ autostart = true
 [node name="Portal" parent="." instance=ExtResource( 12 )]
 position = Vector2( 680, 288 )
 next_scene_path = "res://scenes/level2/Level2.tscn"
+
+[node name="FadeToBlack" parent="Portal" instance=ExtResource( 14 )]
+position = Vector2( -297.227, -370.897 )
+script = SubResource( 53 )
+next_scene = "res://scenes/level2/Level2.tscn"
 
 [node name="Voices" type="Node2D" parent="."]
 

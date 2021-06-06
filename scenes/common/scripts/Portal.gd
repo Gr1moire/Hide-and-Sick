@@ -4,6 +4,8 @@ extends Area2D
 
 export (String, FILE) var next_scene_path = ""
 
+onready var fade = $FadeToBlack/AnimationPlayer
+
 func _get_configuration_warning() -> String:
 	if next_scene_path == "":
 		return "Next scene path must be set"
@@ -12,4 +14,4 @@ func _get_configuration_warning() -> String:
 
 func _input(event):
 	if Input.is_action_just_pressed("hide") && PlayerVariable.canInteract :
-		get_tree().change_scene(next_scene_path)
+		fade.play("fade")

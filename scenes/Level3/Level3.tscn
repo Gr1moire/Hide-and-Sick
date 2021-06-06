@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/common/assets/DetailTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/LockerSide.tscn" type="PackedScene" id=2]
@@ -9,14 +9,26 @@
 [ext_resource path="res://scenes/Level3/Roof.tres" type="TileSet" id=7]
 [ext_resource path="res://scenes/common/Portal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/level1/assets/horror_loop.mp3" type="AudioStream" id=9]
+[ext_resource path="res://cinematic/FadeToBlack.tscn" type="PackedScene" id=10]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Node2D
+
+export(String, FILE) var next_scene = \"\"
+
+func end_fade():
+	if next_scene != \"\":
+		get_tree().change_scene(next_scene)
+"
 
 [node name="Level3" type="Node2D"]
 
 [node name="Map" type="Node2D" parent="."]
 
 [node name="DarkLight" parent="Map" instance=ExtResource( 4 )]
+visible = true
 
 [node name="Roof" type="TileMap" parent="Map"]
 tile_set = ExtResource( 7 )
@@ -37,10 +49,6 @@ collision_mask = 524288
 format = 1
 tile_data = PoolIntArray( 2, 57, 0, 65551, 14, 0, 65552, 15, 0, 65553, 14, 0, 65554, 16, 0, 65558, 44, 0, 65560, 38, 65536, 131098, 13, 1, 196626, 13, 0, 786440, 0, 0, 786455, 38, 0, 786456, 38, 1, 786457, 0, 0, 851973, 38, 65536, 851989, 44, 0, 851998, 37, 0, 917527, 13, 1, 1441798, 0, 0, 1441809, 57, 0, 1441817, 46, 0, 1441819, 0, 0, 1507338, 38, 65536, 1507342, 44, 0, 1507352, 37, 0, 1507358, 38, 65536, 1572871, 13, 1, 1572872, 13, 0, 1572884, 13, 1 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 55.3585, 44.0786 )
-current = true
-
 [node name="Entities" type="YSort" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource( 5 )]
@@ -51,8 +59,14 @@ collision_mask = 533
 [node name="AnimationTree" parent="Entities/Player" index="3"]
 parameters/playback = SubResource( 1 )
 
+[node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
+frame = 1
+
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/Player"]
 remote_path = NodePath("../../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="Entities/Player"]
+current = true
 
 [node name="YSort" parent="Entities" instance=ExtResource( 3 )]
 position = Vector2( 169, 13.5 )
@@ -81,6 +95,11 @@ collision_mask = 512
 [node name="Portal" parent="." instance=ExtResource( 8 )]
 position = Vector2( 297.227, 370.897 )
 next_scene_path = "res://scenes/Level4/Level4.tscn"
+
+[node name="FadeToBlack" parent="Portal" instance=ExtResource( 10 )]
+position = Vector2( -297.227, -370.897 )
+script = SubResource( 2 )
+next_scene = "res://scenes/Level4/Level4.tscn"
 
 [node name="BacgrouondMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )

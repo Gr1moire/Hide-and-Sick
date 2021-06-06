@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/Level3/Walls.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Level3/Roof.tres" type="TileSet" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/common/LockersBack.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/common/LockerFront.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/common/LockerSide.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/level1/assets/horror_loop.mp3" type="AudioStream" id=9]
 
 [node name="Level4" type="Node2D"]
 
@@ -34,13 +35,15 @@ collision_mask = 524289
 format = 1
 tile_data = PoolIntArray( -196590, 31, 0, -196578, 31, 0, -196571, 32, 0, -131057, 32, 0, -131056, 1, 0, -131050, 32, 0, -131043, 32, 0, -131039, 57, 0, -65526, 32, 0, -65525, 37, 0, -65518, 37, 0, -65512, 14, 0, -65511, 15, 0, -65510, 16, 0, -65505, 52, 0, 28, 10, 1, 38, 67, 0, 65555, 10, 0, 65573, -1073741817, 0, 196623, 1610612746, 1, 393232, 62, 0, 458780, -1073741811, 1, 589835, 31, 0, 589845, 31, 0, 589856, 31, 0, 589861, -1073741811, 1, 655371, 0, 0, 655374, 32, 0, 655381, 32, 0, 655383, 0, 0, 655392, 0, 0, 655395, 32, 0, 720909, 37, 0, 720912, 13, 0, 720914, 44, 0, 720917, 15, 0, 720918, 14, 0, 720922, 52, 0, 720926, 23, 0, 786452, 10, 1, 786464, 12, 0, 851977, 13, 0, 851997, 13, 0, 1114120, 10, 1, 1114143, -1073741817, 0, 1376270, 31, 0, 1376285, 31, 0, 1376288, -1610612723, 1, 1376290, 31, 0, 1441801, -1610612729, 0, 1441810, 0, 0, 1441827, 0, 0, 1507338, 44, 0, 1507341, 14, 0, 1507342, 16, 0, 1507343, 15, 0, 1507348, 37, 0, 1507357, 52, 0, 1507362, 53, 0, 1507366, 44, 0, 1572880, 67, 0, 1572881, 68, 0, 1572899, 12, 0, 1572900, 41, 0, 1638416, 13, 0, 1638431, 13, 0, 1638435, 41, 1, 1835017, -1610612723, 1, 1900560, 62, 0, 1966095, 10, 0, 2031629, 31, 0, 2031636, 31, 0, 2031646, 1610612746, 1, 2031649, 31, 0, 2097163, 0, 0, 2097168, -1610612723, 1, 2097170, 46, 0, 2097174, 57, 0, 2097185, 0, 0, 2097189, -1073741811, 1, 2162698, 44, 0, 2162707, 15, 0, 2162708, 16, 0, 2162709, 14, 0, 2162716, 52, 0, 2162719, 1610612746, 0, 2162720, 44, 0, 2228236, 13, 1, 2228238, 67, 0, 2228250, 1610612743, 0, 2293771, 13, 0 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Entities" type="YSort" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource( 5 )]
 position = Vector2( 375.537, 548.686 )
 collision_mask = 524293
+
+[node name="Camera2D" type="Camera2D" parent="Entities/Player"]
+position = Vector2( 0.123169, 3.36633 )
+current = true
 
 [node name="LOCKER_FRONT" parent="Entities" instance=ExtResource( 7 )]
 position = Vector2( 404.679, 369.421 )
@@ -50,3 +53,9 @@ position = Vector2( 578.179, 215.485 )
 
 [node name="HidingSpotLockerSide" parent="Entities" instance=ExtResource( 8 )]
 position = Vector2( 155.318, 86.5552 )
+
+[node name="BacgrouondMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -25.242
+pitch_scale = 0.57
+autoplay = true

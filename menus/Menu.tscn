@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://menus/TextureButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://menus/Menu.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://player/light.png" type="Texture" id=8]
 [ext_resource path="res://scenes/common/scripts/Torch.gd" type="Script" id=9]
 [ext_resource path="res://menus/Menu.ogg" type="AudioStream" id=10]
+[ext_resource path="res://cinematic/FadeToBlack.tscn" type="PackedScene" id=11]
 
 [sub_resource type="TileSet" id=1]
 0/name = "TileA4_PHC_Interior-Hospital.png 0"
@@ -249,6 +250,9 @@ arrow_margin_from_center = 35
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 autoplay = true
+
+[node name="FadeToBlack" parent="." instance=ExtResource( 11 )]
+next_scene = "res://scenes/level1/Level1.tscn"
 
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
