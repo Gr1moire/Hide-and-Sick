@@ -7,7 +7,7 @@
 vertices = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="NavigationPolygon" id=383]
+[sub_resource type="NavigationPolygon" id=2]
 vertices = PoolVector2Array( 16, 16, 0.995361, 16, 0.995361, 0, 16, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
@@ -1228,7 +1228,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 0/autotile/tile_size = Vector2( 16, 16 )
 0/autotile/spacing = 0
 0/autotile/occluder_map = [  ]
-0/autotile/navpoly_map = [ Vector2( 0, 0 ), SubResource( 1 ), Vector2( 0, 1 ), SubResource( 383 ), Vector2( 1, 0 ), SubResource( 3 ), Vector2( 1, 1 ), SubResource( 4 ) ]
+0/autotile/navpoly_map = [ Vector2( 0, 0 ), SubResource( 1 ), Vector2( 0, 1 ), SubResource( 2 ), Vector2( 1, 0 ), SubResource( 3 ), Vector2( 1, 1 ), SubResource( 4 ) ]
 0/autotile/priority_map = [  ]
 0/autotile/z_index_map = [  ]
 0/occluder_offset = Vector2( 0, 0 )

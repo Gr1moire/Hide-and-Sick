@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scenes/common/assets/DetailTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/assets/GroundTiles.tres" type="TileSet" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://enemies/ennemy1.png" type="Texture" id=6]
 [ext_resource path="res://player/light.png" type="Texture" id=7]
 [ext_resource path="res://scenes/common/scripts/Torch.gd" type="Script" id=8]
+[ext_resource path="res://scenes/common/LockerFront.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/common/LockersBack.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.15663
@@ -141,51 +143,51 @@ tracks/0/keys = {
 "values": [ 5, 6, 7 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=31]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Idle Down"
 
-[sub_resource type="AnimationNodeAnimation" id=32]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Idle Up"
 
-[sub_resource type="AnimationNodeAnimation" id=33]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "Idle Left"
 
-[sub_resource type="AnimationNodeAnimation" id=34]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "Idle Right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=14]
-blend_point_0/node = SubResource( 31 )
+blend_point_0/node = SubResource( 10 )
 blend_point_0/pos = Vector2( 0, 1.1 )
-blend_point_1/node = SubResource( 32 )
+blend_point_1/node = SubResource( 11 )
 blend_point_1/pos = Vector2( 0, -1.1 )
-blend_point_2/node = SubResource( 33 )
+blend_point_2/node = SubResource( 12 )
 blend_point_2/pos = Vector2( -1, 0 )
-blend_point_3/node = SubResource( 34 )
+blend_point_3/node = SubResource( 13 )
 blend_point_3/pos = Vector2( 1, 0 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=35]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "Walk Left"
 
-[sub_resource type="AnimationNodeAnimation" id=36]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "Walk Right"
 
-[sub_resource type="AnimationNodeAnimation" id=37]
+[sub_resource type="AnimationNodeAnimation" id=17]
 animation = "Walk Down"
 
-[sub_resource type="AnimationNodeAnimation" id=38]
+[sub_resource type="AnimationNodeAnimation" id=18]
 animation = "Walk Up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=19]
-blend_point_0/node = SubResource( 35 )
+blend_point_0/node = SubResource( 15 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 36 )
+blend_point_1/node = SubResource( 16 )
 blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 37 )
+blend_point_2/node = SubResource( 17 )
 blend_point_2/pos = Vector2( 0, 1.1 )
-blend_point_3/node = SubResource( 38 )
+blend_point_3/node = SubResource( 18 )
 blend_point_3/pos = Vector2( 0, -1.1 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
@@ -221,20 +223,6 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( -196592, -1073741752, 0, -196590, 46, 0, -196586, -1073741813, 0, -196575, 25, 0, -131064, 0, 0, -131061, -1073741813, 0, -131054, 2, 0, -131047, -1073741817, 0, -131039, 32, 0, -131038, 32, 0, -65521, 44, 0, -65516, 52, 0, -65513, 37, 0, -65511, 33, 0, -65507, 39, 0, -65502, 47, 0, 16, 1610612743, 0, 65550, 55, 0, 65556, 38, 65537, 131083, 38, 65537, 131089, 38, 65536, 196616, 13, 0, 196640, 38, 65537, 393225, 38, 65537, 393226, 45, 0, 393246, 38, 0, 393247, 38, 1, 458760, 49, 0, 458781, 62, 0, 458782, 54, 0, 458785, 48, 0, 524319, 4, 0, 524320, 13, 1, 589857, 13, 0, 655368, 38, 65537, 720904, 49, 0, 720905, 55, 0, 786456, -1073741813, 0, 786462, 32, 0, 851982, 1, 0, 851985, -1073741815, 0, 851988, 1, 0, 851996, 32, 0, 917512, -1073741817, 0, 917514, 38, 65537, 917528, 16, 0, 917529, 14, 0, 917530, 14, 0, 917531, 16, 0, 917540, 72, 0, 983056, 67, 0, 983057, 68, 0, 983058, 68, 0, 983061, 38, 65537, 983070, 38, 65537, 983074, 31, 0, 1048595, 55, 0, 1048608, 38, 65537, 1114120, 38, 65537, 1114123, 38, 65536, 1114129, 38, 65537, 1114134, 38, 65536, 1114141, 55, 0, 1114153, 57, 0, 1179685, 13, 0, 1245220, 71, 0 )
-
-[node name="Player" parent="Map" instance=ExtResource( 3 )]
-position = Vector2( 504, 152 )
-
-[node name="Camera2D" type="Camera2D" parent="Map/Player"]
-current = true
-limit_left = 64
-limit_top = -112
-limit_right = 784
-limit_bottom = 384
-limit_smoothed = true
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Map/Player"]
-remote_path = NodePath("../../Camera2D")
 
 [node name="BacgrouondMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
@@ -282,3 +270,33 @@ color = Color( 1, 0.992157, 0.988235, 0.815686 )
 energy = 0.99
 shadow_enabled = true
 script = ExtResource( 8 )
+
+[node name="Entities" type="YSort" parent="."]
+
+[node name="Player" parent="Entities" instance=ExtResource( 3 )]
+position = Vector2( 504, 152 )
+
+[node name="Camera2D" type="Camera2D" parent="Entities/Player"]
+current = true
+limit_left = 64
+limit_top = -112
+limit_right = 784
+limit_bottom = 384
+limit_smoothed = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="LOCKER_FRONT" parent="Entities" instance=ExtResource( 9 )]
+position = Vector2( 351.905, -13.8089 )
+
+[node name="HidingSpotLockersBack" parent="Entities" instance=ExtResource( 10 )]
+position = Vector2( 295.157, 280.118 )
+
+[connection signal="body_entered" from="Entities/LOCKER_FRONT/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
+[connection signal="body_exited" from="Entities/LOCKER_FRONT/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
+[connection signal="body_entered" from="Entities/HidingSpotLockersBack/LockersBackSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
+[connection signal="body_exited" from="Entities/HidingSpotLockersBack/LockersBackSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
+
+[editable path="Entities/LOCKER_FRONT"]
+[editable path="Entities/HidingSpotLockersBack"]
