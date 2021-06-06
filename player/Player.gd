@@ -17,7 +17,6 @@ onready var animationState = animationTree.get("parameters/playback")
 
 var velocity = Vector2.ZERO
 var state = MOVE
-var isHided = false
 var canHide = false
 var canInteract = false
 
@@ -47,7 +46,7 @@ func move_state(delta):
 	else:
 		animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)    
-	if !isHided:
+	if !PlayerVariable.isHided:
 		move()
 
 func move():
@@ -55,12 +54,12 @@ func move():
 
 func _input(event):
 	if canHide:
-		if Input.is_action_just_pressed("hide") && !isHided:
-			isHided = true
+		if Input.is_action_just_pressed("hide") && !PlayerVariable.isHided:
+			PlayerVariable.isHided = true
 			visible = false
 			get_child(5).play()
-		elif Input.is_action_just_pressed("hide") && isHided:
-			isHided = false
+		elif Input.is_action_just_pressed("hide") && PlayerVariable.isHided:
+			PlayerVariable.isHided = false
 			visible = true
 
 func _on_HidingSpot_body_entered(body):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://scenes/Level3/Walls.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Level3/Roof.tres" type="TileSet" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/common/LockerSide.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/common/Portal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://enemies/Enemy1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/level2/Level2.gd" type="Script" id=10]
 [ext_resource path="res://scenes/main/DetectionZone.gd" type="Script" id=11]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
@@ -342,10 +343,12 @@ start_node = "Idle"
 radius = 72.0
 
 [node name="Level2" type="Node2D"]
+script = ExtResource( 10 )
 
 [node name="Map" type="Node2D" parent="."]
 
 [node name="DarkLight" parent="Map" instance=ExtResource( 4 )]
+visible = true
 
 [node name="Navigation2D" type="Navigation2D" parent="Map" groups=[
 "LevelNaviguation",
@@ -385,14 +388,11 @@ collision_mask = 524309
 [node name="AnimationTree" parent="Entities/Player" index="3"]
 parameters/playback = SubResource( 1 )
 
-[node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
-frame = 1
-
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/Player"]
 remote_path = NodePath("../../../Camera2D")
 
 [node name="Enemy" parent="Entities" instance=ExtResource( 9 )]
-position = Vector2( 382.13, 541.675 )
+position = Vector2( 380.049, 534.391 )
 script = SubResource( 2 )
 actual_dest = Vector2( 270, 340 )
 dest = Vector2( 190, 140 )
