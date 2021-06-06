@@ -13,6 +13,10 @@ config_version=4
 config/name="Hide and sick"
 config/icon="res://icon.png"
 
+[autoload]
+
+PlayerVariable="*res://globals/PlayerVariable.gd"
+
 [display]
 
 window/size/width=320
