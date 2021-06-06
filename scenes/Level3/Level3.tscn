@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/common/assets/DetailTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/LockerSide.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/Level3/Walls.tres" type="TileSet" id=6]
 [ext_resource path="res://scenes/Level3/Roof.tres" type="TileSet" id=7]
 [ext_resource path="res://scenes/common/Portal.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/level1/assets/horror_loop.mp3" type="AudioStream" id=9]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -16,7 +17,6 @@
 [node name="Map" type="Node2D" parent="."]
 
 [node name="DarkLight" parent="Map" instance=ExtResource( 4 )]
-visible = true
 
 [node name="Roof" type="TileMap" parent="Map"]
 tile_set = ExtResource( 7 )
@@ -81,6 +81,12 @@ collision_mask = 512
 [node name="Portal" parent="." instance=ExtResource( 8 )]
 position = Vector2( 297.227, 370.897 )
 next_scene_path = "res://scenes/Level4/Level4.tscn"
+
+[node name="BacgrouondMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -33.32
+pitch_scale = 0.57
+autoplay = true
 
 [connection signal="body_entered" from="Entities/YSort/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
 [connection signal="body_exited" from="Entities/YSort/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]

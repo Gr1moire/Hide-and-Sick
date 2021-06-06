@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Le_silence.mp3-17ebc7d64a7537fcfc1b41f133ec36dc.mp3str"
+
+[deps]
+
+source_file="res://voices/Le_silence.mp3"
+dest_files=[ "res://.import/Le_silence.mp3-17ebc7d64a7537fcfc1b41f133ec36dc.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -273,7 +273,8 @@ shape = SubResource( 25 )
 stream = ExtResource( 4 )
 volume_db = 16.349
 autoplay = true
-attenuation = 4.75683
+max_distance = 700.0
+attenuation = 7.46426
 
 [node name="Line2D" type="Line2D" parent="."]
 width = 2.0

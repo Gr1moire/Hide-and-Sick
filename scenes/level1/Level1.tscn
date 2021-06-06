@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://scenes/common/assets/DetailTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/assets/GroundTiles.tres" type="TileSet" id=2]
@@ -6,10 +6,12 @@
 [ext_resource path="res://scenes/common/DarkLight.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/level1/assets/horror_loop.mp3" type="AudioStream" id=5]
 [ext_resource path="res://enemies/Enemy1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/main/DetectionZone.gd" type="Script" id=8]
 [ext_resource path="res://scenes/common/LockerFront.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/common/LockersBack.tscn" type="PackedScene" id=10]
 [ext_resource path="res://player/SpaceButtonAnimation.png" type="Texture" id=11]
 [ext_resource path="res://scenes/common/Portal.tscn" type="PackedScene" id=12]
+[ext_resource path="res://voices/Les_casiers.mp3" type="AudioStream" id=13]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 1.76161
@@ -225,11 +227,210 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=27]
 radius = 3.95882
 
+[sub_resource type="CapsuleShape2D" id=28]
+radius = 4.15663
+height = 4.4124
+
+[sub_resource type="Animation" id=29]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=30]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=31]
+resource_name = "Idle Right"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=32]
+resource_name = "Idle Up"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=33]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=34]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=35]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=36]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=37]
+animation = "Idle Down"
+
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "Idle Up"
+
+[sub_resource type="AnimationNodeAnimation" id=39]
+animation = "Idle Left"
+
+[sub_resource type="AnimationNodeAnimation" id=40]
+animation = "Idle Right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=41]
+blend_point_0/node = SubResource( 37 )
+blend_point_0/pos = Vector2( 0, 1.1 )
+blend_point_1/node = SubResource( 38 )
+blend_point_1/pos = Vector2( 0, -1.1 )
+blend_point_2/node = SubResource( 39 )
+blend_point_2/pos = Vector2( -1, 0 )
+blend_point_3/node = SubResource( 40 )
+blend_point_3/pos = Vector2( 1, 0 )
+min_space = Vector2( -1, -1.1 )
+max_space = Vector2( 1, 1.1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=42]
+animation = "Walk Left"
+
+[sub_resource type="AnimationNodeAnimation" id=43]
+animation = "Walk Right"
+
+[sub_resource type="AnimationNodeAnimation" id=44]
+animation = "Walk Down"
+
+[sub_resource type="AnimationNodeAnimation" id=45]
+animation = "Walk Up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=46]
+blend_point_0/node = SubResource( 42 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 43 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 44 )
+blend_point_2/pos = Vector2( 0, 1.1 )
+blend_point_3/node = SubResource( 45 )
+blend_point_3/pos = Vector2( 0, -1.1 )
+min_space = Vector2( -1, -1.1 )
+max_space = Vector2( 1, 1.1 )
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=47]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=48]
+
+[sub_resource type="AnimationNodeStateMachine" id=49]
+states/Idle/node = SubResource( 41 )
+states/Idle/position = Vector2( 381, 86 )
+states/Walk/node = SubResource( 46 )
+states/Walk/position = Vector2( 559, 86 )
+transitions = [ "Idle", "Walk", SubResource( 47 ), "Walk", "Idle", SubResource( 48 ) ]
+start_node = "Idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=50]
+
+[sub_resource type="CircleShape2D" id=51]
+radius = 72.0
+
+[sub_resource type="RectangleShape2D" id=52]
+
 [node name="Level1" type="Node2D"]
 
 [node name="Map" type="StaticBody2D" parent="."]
 
 [node name="DarkLight" parent="Map" instance=ExtResource( 4 )]
+visible = true
 
 [node name="Navigation2D" type="Navigation2D" parent="Map" groups=[
 "LevelNaviguation",
@@ -249,7 +450,7 @@ tile_data = PoolIntArray( -196575, 25, 0, -131056, -1073741752, 0, -131054, 46, 
 
 [node name="BacgrouondMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-volume_db = -13.126
+volume_db = -25.242
 pitch_scale = 0.57
 autoplay = true
 
@@ -302,25 +503,72 @@ limit_top = -100
 limit_right = 784
 limit_bottom = 512
 
-[node name="Portal" parent="." instance=ExtResource( 12 )]
-position = Vector2( 680, 288 )
-next_scene_path = "res://scenes/level2/Level2.tscn"
-
-[node name="Enemy" parent="." instance=ExtResource( 6 )]
-position = Vector2( 417.925, 29.4314 )
-playerPath = NodePath("../Entities/Player")
+[node name="Enemy" parent="Entities" instance=ExtResource( 6 )]
+position = Vector2( 410.336, 30.5293 )
+playerPath = NodePath("../Player")
 actual_dest = Vector2( 420, 30 )
 dest = Vector2( 150, 130 )
 dest2 = Vector2( 420, 265 )
 dest3 = Vector2( 420, 30 )
 
+[node name="Player Collision" parent="Entities/Enemy" index="1"]
+shape = SubResource( 28 )
+
+[node name="AnimationPlayer" parent="Entities/Enemy" index="2"]
+"anims/Idle Down" = SubResource( 29 )
+"anims/Idle Left" = SubResource( 30 )
+"anims/Idle Right" = SubResource( 31 )
+"anims/Idle Up" = SubResource( 32 )
+"anims/Walk Down" = SubResource( 33 )
+"anims/Walk Left" = SubResource( 34 )
+"anims/Walk Right" = SubResource( 35 )
+"anims/Walk Up" = SubResource( 36 )
+
+[node name="AnimationTree" parent="Entities/Enemy" index="3"]
+tree_root = SubResource( 49 )
+parameters/playback = SubResource( 50 )
+
+[node name="DetectionZone" parent="Entities/Enemy" index="5"]
+script = ExtResource( 8 )
+
+[node name="Zone" parent="Entities/Enemy/DetectionZone" index="0"]
+shape = SubResource( 51 )
+
+[node name="Line2D" type="Line2D" parent="Entities/Enemy"]
+width = 2.0
+
+[node name="Timer" type="Timer" parent="Entities/Enemy"]
+wait_time = 0.2
+autostart = true
+
+[node name="Portal" parent="." instance=ExtResource( 12 )]
+position = Vector2( 680, 288 )
+next_scene_path = "res://scenes/level2/Level2.tscn"
+
+[node name="Voices" type="Node2D" parent="."]
+
+[node name="Voice1" type="Area2D" parent="Voices"]
+
+[node name="Voice1Audio" type="AudioStreamPlayer" parent="Voices/Voice1"]
+stream = ExtResource( 13 )
+volume_db = -3.03
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Voices/Voice1"]
+position = Vector2( 504, 96 )
+shape = SubResource( 52 )
+
 [connection signal="body_entered" from="Entities/LOCKER_FRONT/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
 [connection signal="body_exited" from="Entities/LOCKER_FRONT/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
 [connection signal="body_entered" from="Entities/HidingSpotLockersBack/LockersBackSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
 [connection signal="body_exited" from="Entities/HidingSpotLockersBack/LockersBackSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
+[connection signal="body_entered" from="Entities/Enemy/DetectionZone" to="Entities/Enemy/DetectionZone" method="_on_DetectionZone_body_entered"]
+[connection signal="body_exited" from="Entities/Enemy/DetectionZone" to="Entities/Enemy/DetectionZone" method="_on_DetectionZone_body_exited"]
 [connection signal="body_entered" from="Portal" to="Entities/Player" method="_on_Portal_body_entered"]
 [connection signal="body_exited" from="Portal" to="Entities/Player" method="_on_Portal_body_exited"]
+[connection signal="body_entered" from="Voices/Voice1" to="Entities/Player" method="_on_Voice1_body_entered"]
+[connection signal="finished" from="Voices/Voice1/Voice1Audio" to="Entities/Player" method="_on_Voice1Audio_finished"]
 
 [editable path="Entities/LOCKER_FRONT"]
 [editable path="Entities/HidingSpotLockersBack"]
 [editable path="Entities/Player"]
+[editable path="Entities/Enemy"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Les_casiers.mp3-5c43029b0fe6e35dfc777547e67708b2.mp3str"
+
+[deps]
+
+source_file="res://voices/Les_casiers.mp3"
+dest_files=[ "res://.import/Les_casiers.mp3-5c43029b0fe6e35dfc777547e67708b2.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
