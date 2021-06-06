@@ -487,6 +487,7 @@ parameters/playback = SubResource( 23 )
 
 [node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
 frames = SubResource( 26 )
+frame = 1
 
 [node name="Zone" parent="Entities/Player/DetectionZone" index="0"]
 shape = SubResource( 27 )

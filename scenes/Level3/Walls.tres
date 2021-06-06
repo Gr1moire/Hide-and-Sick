@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=157 format=2]
+[gd_resource type="TileSet" load_steps=156 format=2]
 
 [ext_resource path="res://scenes/common/assets/TileA4_PHC_Interior-Hospital.png" type="Texture" id=1]
 [ext_resource path="res://scenes/common/assets/TileA5_PHC_Interior-Hospital.png" type="Texture" id=2]
@@ -461,10 +461,6 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=153]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-
-[sub_resource type="NavigationPolygon" id=154]
-vertices = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
 [resource]
 0/name = "Wall1"
@@ -1599,7 +1595,6 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 9/tile_mode = 0
 9/occluder_offset = Vector2( 0, 0 )
 9/navigation_offset = Vector2( 0, 0 )
-9/navigation = SubResource( 154 )
 9/shape_offset = Vector2( 0, 0 )
 9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 9/shape_one_way = false
