@@ -63,9 +63,13 @@ func _input(event):
 			visible = true
 
 func _on_HidingSpot_body_entered(body):
-	canHide = true
-	get_child(4).visible = true
+	if body.is_in_group("player") :
+		canHide = true
+		print(body)	
+		get_child(4).visible = true
 
 func _on_HidingSpot_body_exited(body):
-	canHide = false
-	get_child(4).visible = false
+	if body.is_in_group("player") :
+		canHide = false
+		print(body)
+		get_child(4).visible = false

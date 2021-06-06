@@ -221,7 +221,9 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=27]
 radius = 3.95882
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
 position = Vector2( -0.641485, -5.92143 )
 collision_layer = 2
 collision_mask = 5
@@ -259,7 +261,6 @@ parameters/Walk/blend_position = Vector2( 0.0519782, -0.11547 )
 visible = false
 position = Vector2( 0, -17.3625 )
 frames = SubResource( 26 )
-frame = 1
 playing = true
 
 [node name="LockerSound" type="AudioStreamPlayer" parent="."]

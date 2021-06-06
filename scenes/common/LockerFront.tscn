@@ -8,7 +8,7 @@ extents = Vector2( 48.7631, 10 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 48.3426, 19.6251 )
 
-[node name="YSort" type="YSort"]
+[node name="LOCKER_FRONT" type="YSort"]
 
 [node name="HidingSpotLockerFront" type="StaticBody2D" parent="."]
 
