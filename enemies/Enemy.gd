@@ -67,6 +67,10 @@ func accelerate_towards_point(point, delta):
 	velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
 
 func move():
+	if velocity.x < 0:
+		$Sprite.set_flip_h(true)
+	else:
+		$Sprite.set_flip_h(false)
 	velocity = move_and_slide(velocity)
 
 func naviguate():

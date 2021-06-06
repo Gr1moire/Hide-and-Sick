@@ -144,51 +144,51 @@ tracks/0/keys = {
 "values": [ 5, 6, 7 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=28]
+[sub_resource type="AnimationNodeAnimation" id=88]
 animation = "Idle Down"
 
-[sub_resource type="AnimationNodeAnimation" id=29]
+[sub_resource type="AnimationNodeAnimation" id=89]
 animation = "Idle Up"
 
-[sub_resource type="AnimationNodeAnimation" id=30]
+[sub_resource type="AnimationNodeAnimation" id=90]
 animation = "Idle Left"
 
-[sub_resource type="AnimationNodeAnimation" id=31]
+[sub_resource type="AnimationNodeAnimation" id=91]
 animation = "Idle Right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=14]
-blend_point_0/node = SubResource( 28 )
+blend_point_0/node = SubResource( 88 )
 blend_point_0/pos = Vector2( 0, 1.1 )
-blend_point_1/node = SubResource( 29 )
+blend_point_1/node = SubResource( 89 )
 blend_point_1/pos = Vector2( 0, -1.1 )
-blend_point_2/node = SubResource( 30 )
+blend_point_2/node = SubResource( 90 )
 blend_point_2/pos = Vector2( -1, 0 )
-blend_point_3/node = SubResource( 31 )
+blend_point_3/node = SubResource( 91 )
 blend_point_3/pos = Vector2( 1, 0 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=32]
+[sub_resource type="AnimationNodeAnimation" id=92]
 animation = "Walk Left"
 
-[sub_resource type="AnimationNodeAnimation" id=33]
+[sub_resource type="AnimationNodeAnimation" id=93]
 animation = "Walk Right"
 
-[sub_resource type="AnimationNodeAnimation" id=34]
+[sub_resource type="AnimationNodeAnimation" id=94]
 animation = "Walk Down"
 
-[sub_resource type="AnimationNodeAnimation" id=35]
+[sub_resource type="AnimationNodeAnimation" id=95]
 animation = "Walk Up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=19]
-blend_point_0/node = SubResource( 32 )
+blend_point_0/node = SubResource( 92 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 33 )
+blend_point_1/node = SubResource( 93 )
 blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 34 )
+blend_point_2/node = SubResource( 94 )
 blend_point_2/pos = Vector2( 0, 1.1 )
-blend_point_3/node = SubResource( 35 )
+blend_point_3/node = SubResource( 95 )
 blend_point_3/pos = Vector2( 0, -1.1 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
@@ -356,51 +356,51 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=61]
+[sub_resource type="AnimationNodeAnimation" id=80]
 animation = "Idle Down"
 
-[sub_resource type="AnimationNodeAnimation" id=26]
+[sub_resource type="AnimationNodeAnimation" id=81]
 animation = "Idle Up"
 
-[sub_resource type="AnimationNodeAnimation" id=27]
+[sub_resource type="AnimationNodeAnimation" id=82]
 animation = "Idle Left"
 
-[sub_resource type="AnimationNodeAnimation" id=62]
+[sub_resource type="AnimationNodeAnimation" id=83]
 animation = "Idle Right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=63]
-blend_point_0/node = SubResource( 61 )
+blend_point_0/node = SubResource( 80 )
 blend_point_0/pos = Vector2( 0, 1.1 )
-blend_point_1/node = SubResource( 26 )
+blend_point_1/node = SubResource( 81 )
 blend_point_1/pos = Vector2( 0, -1.1 )
-blend_point_2/node = SubResource( 27 )
+blend_point_2/node = SubResource( 82 )
 blend_point_2/pos = Vector2( -1, 0 )
-blend_point_3/node = SubResource( 62 )
+blend_point_3/node = SubResource( 83 )
 blend_point_3/pos = Vector2( 1, 0 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=64]
+[sub_resource type="AnimationNodeAnimation" id=84]
 animation = "Walk Left"
 
-[sub_resource type="AnimationNodeAnimation" id=65]
+[sub_resource type="AnimationNodeAnimation" id=85]
 animation = "Walk Right"
 
-[sub_resource type="AnimationNodeAnimation" id=66]
+[sub_resource type="AnimationNodeAnimation" id=86]
 animation = "Walk Down"
 
-[sub_resource type="AnimationNodeAnimation" id=67]
+[sub_resource type="AnimationNodeAnimation" id=87]
 animation = "Walk Up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=68]
-blend_point_0/node = SubResource( 64 )
+blend_point_0/node = SubResource( 84 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 65 )
+blend_point_1/node = SubResource( 85 )
 blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 66 )
+blend_point_2/node = SubResource( 86 )
 blend_point_2/pos = Vector2( 0, 1.1 )
-blend_point_3/node = SubResource( 67 )
+blend_point_3/node = SubResource( 87 )
 blend_point_3/pos = Vector2( 0, -1.1 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
@@ -464,7 +464,7 @@ position = Vector2( 0, 0.594604 )
 [node name="Player" parent="Entities" groups=[
 "Player",
 ] instance=ExtResource( 3 )]
-position = Vector2( 221.16, 35.8482 )
+position = Vector2( 501.493, 158.061 )
 collision_mask = 21
 
 [node name="Player Collision" parent="Entities/Player" index="1"]
@@ -486,6 +486,7 @@ parameters/playback = SubResource( 55 )
 
 [node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
 frames = SubResource( 56 )
+frame = 1
 
 [node name="Zone" parent="Entities/Player/DetectionZone" index="0"]
 shape = SubResource( 57 )
@@ -498,12 +499,12 @@ limit_right = 640
 limit_bottom = 512
 
 [node name="Enemy" parent="Entities" instance=ExtResource( 6 )]
-position = Vector2( 151.422, 21.7099 )
+position = Vector2( 410.336, 30.5293 )
 script = ExtResource( 7 )
-actual_dest = Vector2( 150, 30 )
-dest = Vector2( 390, 30 )
-dest2 = Vector2( 150, 30 )
-dest3 = Vector2( 150, 100 )
+actual_dest = Vector2( 420, 30 )
+dest = Vector2( 150, 130 )
+dest2 = Vector2( 420, 265 )
+dest3 = Vector2( 420, 30 )
 
 [node name="Player Collision" parent="Entities/Enemy" index="1"]
 shape = SubResource( 58 )
