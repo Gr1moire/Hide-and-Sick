@@ -139,51 +139,51 @@ tracks/0/keys = {
 "values": [ 5, 6, 7 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=28]
+[sub_resource type="AnimationNodeAnimation" id=88]
 animation = "Idle Down"
 
-[sub_resource type="AnimationNodeAnimation" id=29]
+[sub_resource type="AnimationNodeAnimation" id=89]
 animation = "Idle Up"
 
-[sub_resource type="AnimationNodeAnimation" id=30]
+[sub_resource type="AnimationNodeAnimation" id=90]
 animation = "Idle Left"
 
-[sub_resource type="AnimationNodeAnimation" id=31]
+[sub_resource type="AnimationNodeAnimation" id=91]
 animation = "Idle Right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=14]
-blend_point_0/node = SubResource( 28 )
+blend_point_0/node = SubResource( 88 )
 blend_point_0/pos = Vector2( 0, 1.1 )
-blend_point_1/node = SubResource( 29 )
+blend_point_1/node = SubResource( 89 )
 blend_point_1/pos = Vector2( 0, -1.1 )
-blend_point_2/node = SubResource( 30 )
+blend_point_2/node = SubResource( 90 )
 blend_point_2/pos = Vector2( -1, 0 )
-blend_point_3/node = SubResource( 31 )
+blend_point_3/node = SubResource( 91 )
 blend_point_3/pos = Vector2( 1, 0 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=32]
+[sub_resource type="AnimationNodeAnimation" id=92]
 animation = "Walk Left"
 
-[sub_resource type="AnimationNodeAnimation" id=33]
+[sub_resource type="AnimationNodeAnimation" id=93]
 animation = "Walk Right"
 
-[sub_resource type="AnimationNodeAnimation" id=34]
+[sub_resource type="AnimationNodeAnimation" id=94]
 animation = "Walk Down"
 
-[sub_resource type="AnimationNodeAnimation" id=35]
+[sub_resource type="AnimationNodeAnimation" id=95]
 animation = "Walk Up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=19]
-blend_point_0/node = SubResource( 32 )
+blend_point_0/node = SubResource( 92 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 33 )
+blend_point_1/node = SubResource( 93 )
 blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 34 )
+blend_point_2/node = SubResource( 94 )
 blend_point_2/pos = Vector2( 0, 1.1 )
-blend_point_3/node = SubResource( 35 )
+blend_point_3/node = SubResource( 95 )
 blend_point_3/pos = Vector2( 0, -1.1 )
 min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
