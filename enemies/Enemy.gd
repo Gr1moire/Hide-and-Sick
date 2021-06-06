@@ -12,6 +12,7 @@ const FRICTION = 100
 
 onready var detection_zone = $DetectionZone
 onready var player = $"../Player"
+#onready var line = $Line2D
 
 var velocity = Vector2.DOWN
 
@@ -19,7 +20,14 @@ const SPEED = 40
 var path: Array = []
 var levelNaviguation: Navigation2D = null
 var plr = null
-export(Vector2) var dest = Vector2(250, 500)
+
+export(Vector2) var actual_dest
+export(Vector2) var dest
+export(Vector2) var dest2
+export(Vector2) var dest3
+
+onready var tab = [dest, dest2, dest3]
+var index = 1
 #########################
 
 func _ready():
@@ -36,8 +44,7 @@ func _physics_process(delta):
 	pass
 	
 func _process(delta):
-	#AnimationLoop()
-	pass
+	AnimationLoop()
 
 #########################
 
@@ -45,15 +52,15 @@ func chase_player(delta):
 	var play = detection_zone.player
 	if play && !get_node("../Player").isHided:
 		accelerate_towards_point(play.global_position, delta)
-		move()
 	else:
 		make_path_finding()
+	move()
 	
 func make_path_finding():
+	#line.global_position = Vector2.ZERO
 	if levelNaviguation && player:
 		generate_path()
 		naviguate()
-	move()
 
 func accelerate_towards_point(point, delta):
 	var direction = global_position.direction_to(point)
@@ -70,11 +77,19 @@ func naviguate():
 
 func generate_path():
 	if levelNaviguation && plr:
-		path = levelNaviguation.get_simple_path(global_position, dest, false)
+		path = levelNaviguation.get_simple_path(global_position, actual_dest, false)
+		#line.points = path
+
+func _on_Timer_timeout():
+	var distance = global_position.distance_to(actual_dest)
+	if distance < 5:
+		index += 1
+		if index == 3:
+			index = 0
+		actual_dest = tab[index]
 
 #########################
 
-	
 func MovementLoop(delta):
 	var prepos = remote_transform.get_global_position()
 	remote_transform.set_offset(remote_transform.get_offset() + speed + delta / 2)
@@ -102,3 +117,5 @@ func AnimationLoop():
 	else:
 		animation_direction = "Walk Left"
 	get_node("AnimationPlayer").play(animation_direction)
+
+
