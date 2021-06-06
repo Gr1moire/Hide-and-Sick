@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/Level3/Walls.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Level3/Roof.tres" type="TileSet" id=2]
@@ -9,337 +9,8 @@
 [ext_resource path="res://scenes/common/LockerSide.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/common/Portal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://enemies/Enemy1.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/main/DetectionZone.gd" type="Script" id=11]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
-
-[sub_resource type="GDScript" id=91]
-script/source = "extends KinematicBody2D
-
-onready var remote_transform = get_node(\"../../EnemyPath/PathFollow2D\")
-
-var speed = 0.1
-var move_direction = 0
-
-#########################
-const MAX_SPEED = 55
-const ACCELERATION = 300
-const FRICTION = 100
-
-onready var detection_zone = $DetectionZone
-onready var touch_player = $TouchPlayer
-onready var player = $\"../Player\"
-#onready var line = $Line2D
-
-var velocity = Vector2.DOWN
-
-const SPEED = 40
-var path: Array = []
-var levelNaviguation: Navigation2D = null
-var plr = null
-
-export(Vector2) var actual_dest
-export(Vector2) var dest
-export(Vector2) var dest2
-export(Vector2) var dest3
-
-onready var tab = [dest, dest2, dest3]
-var index = 1
-#########################
-
-func _ready():
-	randomize()
-	yield(get_tree(), \"idle_frame\")
-	var tree = get_tree()
-	if tree.has_group(\"LevelNaviguation\"):
-		levelNaviguation = tree.get_nodes_in_group(\"LevelNaviguation\")[0]
-	if tree.has_group(\"Player\"):
-		plr = tree.get_nodes_in_group(\"Player\")[0]
-
-func _physics_process(delta):
-	chase_player(delta)
-	var test = touch_player.touched_player
-	if test:
-		get_tree().change_scene(\"res://cinematic/getBackToYourBed.tscn\")
-	pass
-	
-func _process(delta):
-	AnimationLoop()
-
-#########################
-
-func chase_player(delta):
-	var play = detection_zone.player
-	if play && !get_node(\"../Player\").isHided:
-		accelerate_towards_point(play.global_position, delta)
-	else:
-		make_path_finding()
-	move()
-	
-func make_path_finding():
-	#line.global_position = Vector2.ZERO
-	if levelNaviguation && player:
-		generate_path()
-		naviguate()
-
-func accelerate_towards_point(point, delta):
-	var direction = global_position.direction_to(point)
-	velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
-
-func move():
-	if velocity.x < 0:
-		$Sprite.set_flip_h(true)
-	else:
-		$Sprite.set_flip_h(false)
-	velocity = move_and_slide(velocity)
-
-func naviguate():
-	if path.size() > 0:
-		velocity = global_position.direction_to(path[1]) * SPEED
-		if global_position == path[0]:
-			path.pop_front()
-
-func generate_path():
-	if levelNaviguation && plr:
-		path = levelNaviguation.get_simple_path(global_position, actual_dest, false)
-		#line.points = path
-
-func _on_Timer_timeout():
-	var distance = global_position.distance_to(actual_dest)
-	if distance < 5:
-		index += 1
-		if index == 3:
-			index = 0
-		actual_dest = tab[index]
-
-#########################
-
-func MovementLoop(delta):
-	var prepos = remote_transform.get_global_position()
-	remote_transform.set_offset(remote_transform.get_offset() + speed + delta / 2)
-	var pos = remote_transform.get_global_position()
-	move_direction = (pos.angle_to_point(prepos) / 3.14) * 180 
-
-func AnimationLoop():
-	var animation_direction : String
-	if move_direction <= 15 && move_direction >= -15:
-		animation_direction = \"Walk Right\"
-	elif move_direction <= -165 && move_direction >= 165:
-		animation_direction = \"Walk Left\"
-	elif move_direction <= 60 && move_direction >= 15:
-		animation_direction = \"Walk Right\"
-	elif move_direction <= 120 && move_direction >= 60:
-		animation_direction = \"Walk Down\"
-	elif move_direction <= 165 && move_direction >= 120:
-		animation_direction = \"Walk Left\"
-	elif move_direction >= -60 && move_direction <= -15:
-		animation_direction = \"Walk Right\"
-	elif move_direction >= -120 && move_direction <= -60:
-		animation_direction = \"Walk Up\"
-	elif move_direction >= -165 && move_direction <= -120:
-		animation_direction = \"Walk Left\"
-	else:
-		animation_direction = \"Walk Left\"
-	get_node(\"AnimationPlayer\").play(animation_direction)
-
-
-"
-
-[sub_resource type="CapsuleShape2D" id=71]
-radius = 4.15663
-height = 4.4124
-
-[sub_resource type="Animation" id=72]
-length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-
-[sub_resource type="Animation" id=73]
-length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-
-[sub_resource type="Animation" id=74]
-resource_name = "Idle Right"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
-
-[sub_resource type="Animation" id=75]
-resource_name = "Idle Up"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
-
-[sub_resource type="Animation" id=76]
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3 ]
-}
-
-[sub_resource type="Animation" id=77]
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3 ]
-}
-
-[sub_resource type="Animation" id=78]
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 4, 5, 6, 7 ]
-}
-
-[sub_resource type="Animation" id=79]
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 4, 5, 6, 7 ]
-}
-
-[sub_resource type="AnimationNodeAnimation" id=80]
-animation = "Idle Down"
-
-[sub_resource type="AnimationNodeAnimation" id=81]
-animation = "Idle Up"
-
-[sub_resource type="AnimationNodeAnimation" id=82]
-animation = "Idle Left"
-
-[sub_resource type="AnimationNodeAnimation" id=83]
-animation = "Idle Right"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=63]
-blend_point_0/node = SubResource( 80 )
-blend_point_0/pos = Vector2( 0, 1.1 )
-blend_point_1/node = SubResource( 81 )
-blend_point_1/pos = Vector2( 0, -1.1 )
-blend_point_2/node = SubResource( 82 )
-blend_point_2/pos = Vector2( -1, 0 )
-blend_point_3/node = SubResource( 83 )
-blend_point_3/pos = Vector2( 1, 0 )
-min_space = Vector2( -1, -1.1 )
-max_space = Vector2( 1, 1.1 )
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id=84]
-animation = "Walk Left"
-
-[sub_resource type="AnimationNodeAnimation" id=85]
-animation = "Walk Right"
-
-[sub_resource type="AnimationNodeAnimation" id=86]
-animation = "Walk Down"
-
-[sub_resource type="AnimationNodeAnimation" id=87]
-animation = "Walk Up"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=68]
-blend_point_0/node = SubResource( 84 )
-blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 85 )
-blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 86 )
-blend_point_2/pos = Vector2( 0, 1.1 )
-blend_point_3/node = SubResource( 87 )
-blend_point_3/pos = Vector2( 0, -1.1 )
-min_space = Vector2( -1, -1.1 )
-max_space = Vector2( 1, 1.1 )
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=69]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=70]
-
-[sub_resource type="AnimationNodeStateMachine" id=88]
-states/Idle/node = SubResource( 63 )
-states/Idle/position = Vector2( 381, 86 )
-states/Walk/node = SubResource( 68 )
-states/Walk/position = Vector2( 559, 86 )
-transitions = [ "Idle", "Walk", SubResource( 69 ), "Walk", "Idle", SubResource( 70 ) ]
-start_node = "Idle"
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=89]
-
-[sub_resource type="CircleShape2D" id=90]
-radius = 72.0
 
 [node name="Level2" type="Node2D"]
 
@@ -385,48 +56,11 @@ collision_mask = 524309
 [node name="AnimationTree" parent="Entities/Player" index="3"]
 parameters/playback = SubResource( 1 )
 
+[node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
+frame = 1
+
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/Player"]
 remote_path = NodePath("../../../Camera2D")
-
-[node name="Enemy" parent="Entities" instance=ExtResource( 9 )]
-position = Vector2( 382.13, 541.675 )
-script = SubResource( 91 )
-actual_dest = Vector2( 270, 340 )
-dest = Vector2( 190, 140 )
-dest2 = Vector2( 280, 330 )
-dest3 = Vector2( 380, 541 )
-
-[node name="Player Collision" parent="Entities/Enemy" index="1"]
-shape = SubResource( 71 )
-
-[node name="AnimationPlayer" parent="Entities/Enemy" index="2"]
-"anims/Idle Down" = SubResource( 72 )
-"anims/Idle Left" = SubResource( 73 )
-"anims/Idle Right" = SubResource( 74 )
-"anims/Idle Up" = SubResource( 75 )
-"anims/Walk Down" = SubResource( 76 )
-"anims/Walk Left" = SubResource( 77 )
-"anims/Walk Right" = SubResource( 78 )
-"anims/Walk Up" = SubResource( 79 )
-
-[node name="AnimationTree" parent="Entities/Enemy" index="3"]
-tree_root = SubResource( 88 )
-parameters/playback = SubResource( 89 )
-
-[node name="DetectionZone" parent="Entities/Enemy" index="5"]
-script = ExtResource( 11 )
-
-[node name="Zone" parent="Entities/Enemy/DetectionZone" index="0"]
-shape = SubResource( 90 )
-
-[node name="Navigation2D" type="Navigation2D" parent="Entities/Enemy"]
-
-[node name="Line2D" type="Line2D" parent="Entities/Enemy"]
-width = 2.0
-
-[node name="Timer" type="Timer" parent="Entities/Enemy"]
-wait_time = 0.2
-autostart = true
 
 [node name="LOCKER_FRONT" parent="Entities" instance=ExtResource( 6 )]
 position = Vector2( 276.591, 500.486 )
@@ -453,9 +87,14 @@ next_scene_path = "res://scenes/Level3/Level3.tscn"
 [node name="CollisionShape2D" parent="Portal" index="0"]
 position = Vector2( 1.12373, -2.43475 )
 
-[connection signal="body_entered" from="Entities/Enemy/DetectionZone" to="Entities/Enemy/DetectionZone" method="_on_DetectionZone_body_entered"]
-[connection signal="body_exited" from="Entities/Enemy/DetectionZone" to="Entities/Enemy/DetectionZone" method="_on_DetectionZone_body_exited"]
-[connection signal="timeout" from="Entities/Enemy/Timer" to="Entities/Enemy" method="_on_Timer_timeout"]
+[node name="Enemy" parent="." instance=ExtResource( 9 )]
+position = Vector2( 412.724, 533.366 )
+playerPath = NodePath("../Entities/Player")
+actual_dest = Vector2( 270, 340 )
+dest = Vector2( 190, 140 )
+dest2 = Vector2( 280, 330 )
+dest3 = Vector2( 380, 541 )
+
 [connection signal="body_entered" from="Entities/LOCKER_FRONT/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
 [connection signal="body_exited" from="Entities/LOCKER_FRONT/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
 [connection signal="body_entered" from="Entities/LOCKER_FRONT2/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
@@ -468,7 +107,6 @@ position = Vector2( 1.12373, -2.43475 )
 [connection signal="body_exited" from="Portal" to="Entities/Player" method="_on_Portal_body_exited"]
 
 [editable path="Entities/Player"]
-[editable path="Entities/Enemy"]
 [editable path="Entities/LOCKER_FRONT"]
 [editable path="Entities/LOCKER_FRONT2"]
 [editable path="Entities/HidingSpotLockerSide"]

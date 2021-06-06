@@ -26,10 +26,10 @@ var path: Array = []
 var levelNaviguation: Navigation2D = null
 
 
+export(Vector2) var actual_dest
 export(Vector2) var dest
 export(Vector2) var dest2
 export(Vector2) var dest3
-onready var actual_dest = dest
 
 onready var tab = [dest, dest2, dest3]
 var index = 1
