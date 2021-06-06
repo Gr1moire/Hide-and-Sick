@@ -73,3 +73,8 @@ func _on_HidingSpot_body_exited(body):
 		canHide = false
 		print(body)
 		get_child(4).visible = false
+
+
+
+func _on_LevelEnd_body_entered(body):
+	pass # Replace with function body.

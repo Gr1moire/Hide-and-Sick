@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Level3/Walls.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Level3/Roof.tres" type="TileSet" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/common/LockerFront.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/common/LockerSide.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/common/Portal.tscn" type="PackedScene" id=8]
 
 [node name="Level2" type="Node2D"]
 
@@ -62,6 +63,15 @@ position = Vector2( 0, 29.5821 )
 [node name="HidingSpotLockerSide2" parent="Entities" instance=ExtResource( 7 )]
 position = Vector2( 501.719, 358.031 )
 
+[node name="LevelEnd" type="Area2D" parent="."]
+
+[node name="Portal" parent="." instance=ExtResource( 8 )]
+position = Vector2( 38.956, 52.4408 )
+next_scene_path = "res://scenes/Level3/Level3.tscn"
+
+[node name="CollisionShape2D" parent="Portal" index="0"]
+position = Vector2( 1.12373, -2.43475 )
+
 [connection signal="body_entered" from="Entities/LOCKER_FRONT/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
 [connection signal="body_exited" from="Entities/LOCKER_FRONT/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
 [connection signal="body_entered" from="Entities/LOCKER_FRONT2/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
@@ -75,3 +85,4 @@ position = Vector2( 501.719, 358.031 )
 [editable path="Entities/LOCKER_FRONT2"]
 [editable path="Entities/HidingSpotLockerSide"]
 [editable path="Entities/HidingSpotLockerSide2"]
+[editable path="Portal"]
