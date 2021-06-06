@@ -15,6 +15,7 @@ onready var detection_zone = $DetectionZone
 export(NodePath) var playerPath
 onready var player = get_node(playerPath)
 var playerDetected := false
+onready var touch_player = $TouchPlayer
 #onready var line = $Line2D
 
 var velocity = Vector2.DOWN
@@ -44,7 +45,9 @@ func _ready():
 
 func _physics_process(delta):
 	chase_player(delta)
-	pass
+	var test = touch_player.touched_player
+	if test:
+		get_tree().change_scene("res://cinematic/getBackToYourBed.tscn")
 	
 func _process(delta):
 	AnimationLoop()
