@@ -43,7 +43,7 @@ func _ready():
 func _physics_process(delta):
 	chase_player(delta)
 	var test = touch_player.touched_player
-	if test:
+	if test && PlayerVariable.isHided == false:
 		get_tree().change_scene("res://cinematic/getBackToYourBed.tscn")
 	
 func _process(delta):
@@ -53,7 +53,7 @@ func _process(delta):
 
 func chase_player(delta):
 	var play = detection_zone.player
-	if play && !get_node("../Player").isHided:
+	if play && !PlayerVariable.isHided:
 		accelerate_towards_point(play.global_position, delta)
 	else:
 		make_path_finding()
