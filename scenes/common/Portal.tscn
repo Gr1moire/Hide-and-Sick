@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/common/scripts/Portal.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 13.4447, 16.8068 )
+extents = Vector2( 26.247, 26.9662 )
 
 [node name="Portal" type="Area2D"]
 collision_layer = 4

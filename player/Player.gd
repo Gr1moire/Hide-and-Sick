@@ -19,6 +19,7 @@ var velocity = Vector2.ZERO
 var state = MOVE
 var isHided = false
 var canHide = false
+var canInteract = false
 
 
 func _ready():
@@ -31,7 +32,7 @@ func _physics_process(delta):
 	match state:
 		MOVE:
 			move_state(delta)
-
+		
 func move_state(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -74,7 +75,10 @@ func _on_HidingSpot_body_exited(body):
 		print(body)
 		get_child(4).visible = false
 
+func _on_Portal_body_entered(body):
+	PlayerVariable.canInteract = true
+	get_child(4).visible = true
 
-
-func _on_LevelEnd_body_entered(body):
-	pass # Replace with function body.
+func _on_Portal_body_exited(body):
+	PlayerVariable.canInteract = false
+	get_child(4).visible = false
