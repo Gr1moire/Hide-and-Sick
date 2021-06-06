@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/common/assets/DetailTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/assets/GroundTiles.tres" type="TileSet" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://player/light.png" type="Texture" id=6]
 [ext_resource path="res://cinematic/getBackToYourBed.gd" type="Script" id=7]
 [ext_resource path="res://cinematic/FadeToBlack.tscn" type="PackedScene" id=8]
+[ext_resource path="res://enemies/ennemy1.png" type="Texture" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "animation"
@@ -19,10 +20,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 8, 9, 10, 11, 8, 9, 10, 11, 8, 9, 10, 8, 4, 5, 6 ]
+"values": [ 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 4, 4, 4, 5, 6, 7, 7 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:position")
@@ -89,10 +90,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 8, 9, 10, 11, 8, 9, 10, 11, 8, 9, 10, 8, 4, 5, 6 ]
+"values": [ 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 4, 4, 5, 6, 4, 5, 6 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:position")
@@ -113,7 +114,6 @@ script = ExtResource( 7 )
 [node name="Map" type="StaticBody2D" parent="."]
 
 [node name="DarkLight" parent="Map" instance=ExtResource( 3 )]
-visible = true
 
 [node name="Ground" type="TileMap" parent="Map"]
 tile_set = ExtResource( 2 )
@@ -135,10 +135,9 @@ root_node = NodePath("Sprite")
 anims/animation = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Personnage/Last Guard"]
-position = Vector2( 192, 88 )
-texture = ExtResource( 4 )
-hframes = 16
-frame = 11
+position = Vector2( 312, 88 )
+texture = ExtResource( 9 )
+hframes = 8
 __meta__ = {
 "_edit_group_": true
 }
@@ -166,13 +165,13 @@ root_node = NodePath("Sprite")
 anims/animation = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Personnage/First Guard"]
-position = Vector2( 280, 88 )
-texture = ExtResource( 4 )
-hframes = 16
-frame = 8
+position = Vector2( 104, 72 )
+texture = ExtResource( 9 )
+hframes = 8
+frame = 7
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="FadeToBlack" parent="." instance=ExtResource( 8 )]
-next_scene = "res://scenes/common/level1/Level1.tscn"
+next_scene = "res://scenes/level1/Level1.tscn"
