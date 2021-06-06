@@ -19,6 +19,7 @@ script = ExtResource( 10 )
 [node name="Map" type="Node2D" parent="."]
 
 [node name="DarkLight" parent="Map" instance=ExtResource( 4 )]
+visible = true
 
 [node name="Navigation2D" type="Navigation2D" parent="Map" groups=[
 "LevelNaviguation",
@@ -57,6 +58,9 @@ collision_mask = 524309
 
 [node name="AnimationTree" parent="Entities/Player" index="3"]
 parameters/playback = SubResource( 1 )
+
+[node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
+frame = 1
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/Player"]
 remote_path = NodePath("../../../Camera2D")
