@@ -36,9 +36,9 @@
 0/shapes = [  ]
 0/z_index = 0
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=4]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=5]
 script/source = "extends Node2D
 
 export(String, FILE) var next_scene = \"\"
@@ -54,6 +54,7 @@ script = ExtResource( 10 )
 [node name="Map" type="Node2D" parent="."]
 
 [node name="DarkLight" parent="Map" instance=ExtResource( 4 )]
+visible = true
 
 [node name="Navigation2D" type="Navigation2D" parent="Map" groups=[
 "LevelNaviguation",
@@ -97,7 +98,7 @@ position = Vector2( 617.305, 454.265 )
 collision_mask = 524309
 
 [node name="AnimationTree" parent="Entities/Player" index="3"]
-parameters/playback = SubResource( 1 )
+parameters/playback = SubResource( 4 )
 
 [node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
 frame = 0
@@ -132,7 +133,7 @@ position = Vector2( 1.12373, -2.43475 )
 
 [node name="FadeToBlack" parent="Portal" instance=ExtResource( 12 )]
 position = Vector2( -229.879, -345.08 )
-script = SubResource( 2 )
+script = SubResource( 5 )
 next_scene = "res://scenes/Level3/Level3.tscn"
 
 [node name="BacgrouondMusic" type="AudioStreamPlayer" parent="."]
