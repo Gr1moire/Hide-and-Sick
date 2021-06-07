@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://player/princess_walking.png" type="Texture" id=1]
 [ext_resource path="res://player/Player.gd" type="Script" id=2]
@@ -220,6 +220,10 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=27]
 radius = 3.95882
 
+[sub_resource type="CapsuleShape2D" id=28]
+radius = 2.54795
+height = 2.99854
+
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
@@ -278,3 +282,10 @@ collision_mask = 16
 [node name="Zone" type="CollisionShape2D" parent="DetectionZone"]
 position = Vector2( 0.0589924, 3.06759 )
 shape = SubResource( 27 )
+
+[node name="EventZone" type="Area2D" parent="."]
+
+[node name="Zone" type="CollisionShape2D" parent="EventZone"]
+position = Vector2( 0, 14.0005 )
+rotation = -1.5708
+shape = SubResource( 28 )
