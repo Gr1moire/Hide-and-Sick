@@ -62,6 +62,7 @@ pause_mode = 2
 stream = ExtResource( 2 )
 
 [node name="FadeToBlack" parent="." instance=ExtResource( 13 )]
+next_scene = "res://menus/Menu.tscn"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

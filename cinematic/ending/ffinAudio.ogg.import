@@ -2,14 +2,14 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/ffinAudio.ogg-9acae48171d1b6a2d9a94a84382bd814.oggstr"
+path="res://.import/ffinAudio.ogg-22477b8d553f0be74f00de4cce832bd0.oggstr"
 
 [deps]
 
-source_file="res://cinematic/ending/ffinAudio.ogg"
-dest_files=[ "res://.import/ffinAudio.ogg-9acae48171d1b6a2d9a94a84382bd814.oggstr" ]
+source_file="res://ffinAudio.ogg"
+dest_files=[ "res://.import/ffinAudio.ogg-22477b8d553f0be74f00de4cce832bd0.oggstr" ]
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
