@@ -1,7 +1,5 @@
 extends KinematicBody2D
 
-#onready var remote_transform = get_node("../../EnemyPath/PathFollow2D")
-
 var speed = 0.1
 var move_direction = 0
 
@@ -23,14 +21,9 @@ const SPEED = 40
 var path: Array = []
 var levelNaviguation: Navigation2D = null
 
+export(Vector2) var player_not_found
 
-export(Vector2) var actual_dest
-export(Vector2) var dest
-export(Vector2) var dest2
-export(Vector2) var dest3
-
-onready var tab = [dest, dest2, dest3]
-var index = 1
+onready var actual_direction = player_not_found
 #########################
 
 func _ready():
@@ -53,15 +46,18 @@ func _process(delta):
 #########################
 
 func chase_player(delta):
-	if playerDetected && !PlayerVariable.isHided:
-		accelerate_towards_point(player.global_position, delta)
+	if PlayerVariable.isHided:
+		make_path_finding("no")
 	else:
-		make_path_finding()
+		make_path_finding("yes")
 	move()
 	
-func make_path_finding():
+func make_path_finding(flag):
 	if levelNaviguation && player:
-		generate_path()
+		if flag == "no":
+			generate_path_no_player()
+		elif flag == "yes":
+			generate_path()
 		naviguate()
 
 func accelerate_towards_point(point, delta):
@@ -83,15 +79,12 @@ func naviguate():
 
 func generate_path():
 	if levelNaviguation:
-		path = levelNaviguation.get_simple_path(global_position, actual_dest, false)
+		path = levelNaviguation.get_simple_path(global_position, player.global_position, false)
 
-func _on_Timer_timeout():
-	var distance = global_position.distance_to(actual_dest)
-	if distance < 5:
-		index += 1
-		if index == 3:
-			index = 0
-		actual_dest = tab[index]
+func generate_path_no_player():
+	if levelNaviguation:
+		path = levelNaviguation.get_simple_path(global_position, player_not_found, false)
+
 
 #########################
 
@@ -121,16 +114,13 @@ func AnimationLoop():
 		animation_direction = "Walk Left"
 	else:
 		animation_direction = "Walk Left"
+	print(animation_direction)
 	get_node("AnimationPlayer").play(animation_direction)
-
-
 
 
 func _on_DetectionZone_body_entered(_body):
 	playerDetected = true
-	print("player")
 
 
 func _on_DetectionZone_body_exited(_body):
 	playerDetected = false
-	print("no player")

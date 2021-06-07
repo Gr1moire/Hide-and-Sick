@@ -218,6 +218,7 @@ script = ExtResource( 5 )
 texture = ExtResource( 3 )
 offset = Vector2( 0.681637, -0.283983 )
 hframes = 8
+frame = 7
 region_enabled = true
 region_rect = Rect2( -1.56696, 6.00688, 145.383, 27.2875 )
 
@@ -275,9 +276,6 @@ volume_db = 16.349
 autoplay = true
 max_distance = 700.0
 attenuation = 7.46426
-
-[node name="Line2D" type="Line2D" parent="."]
-width = 2.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
