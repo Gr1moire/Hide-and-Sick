@@ -99,9 +99,6 @@ collision_mask = 524309
 [node name="AnimationTree" parent="Entities/Player" index="3"]
 parameters/playback = SubResource( 2 )
 
-[node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
-frame = 0
-
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/Player"]
 remote_path = NodePath("../../../Camera2D")
 
@@ -150,6 +147,8 @@ dest3 = Vector2( 380, 541 )
 [connection signal="body_exited" from="Entities/LOCKER_FRONT/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
 [connection signal="body_entered" from="Entities/LOCKER_FRONT2/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
 [connection signal="body_exited" from="Entities/LOCKER_FRONT2/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
+[connection signal="body_entered" from="Entities/HidingSpotLockerSide/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
+[connection signal="body_exited" from="Entities/HidingSpotLockerSide/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
 [connection signal="body_entered" from="Entities/HidingSpotLockerSide2/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
 [connection signal="body_exited" from="Entities/HidingSpotLockerSide2/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
 [connection signal="body_entered" from="Portal" to="Entities/Player" method="_on_Portal_body_entered"]
