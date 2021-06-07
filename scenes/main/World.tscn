@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/common/assets/DetailTiles.tres" type="TileSet" id=2]
@@ -8,10 +8,6 @@
 [ext_resource path="res://scenes/level1/assets/horror_loop.mp3" type="AudioStream" id=6]
 [ext_resource path="res://scenes/common/LockerFront.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/common/LockerSide.tscn" type="PackedScene" id=8]
-[ext_resource path="res://enemies/Enemy1.tscn" type="PackedScene" id=9]
-[ext_resource path="res://enemies/Enemy.gd" type="Script" id=10]
-[ext_resource path="res://scenes/main/DetectionZone.gd" type="Script" id=11]
-[ext_resource path="res://scenes/main/EnemyFollow.gd" type="Script" id=12]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 95.8563, -0.644035, 96.2309, 95.9969, -142.749, 95.2476, -142.749, 0.105118 )
@@ -19,14 +15,7 @@ polygon = PoolVector2Array( 95.8563, -0.644035, 96.2309, 95.9969, -142.749, 95.2
 [sub_resource type="OccluderPolygon2D" id=2]
 polygon = PoolVector2Array( 160, 0, 160.658, 95.6222, 512.011, 95.9968, 512, 0 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
-
 [sub_resource type="AnimationNodeStateMachinePlayback" id=3]
-
-[sub_resource type="Curve2D" id=4]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 478.825, 211.907, 0, 0, 0, 0, 375.375, 202.23, 0, 0, 0, 0, 271.591, 214.107, 0, 0, 0, 0, 376.376, 223.344, 0, 0, 0, 0, 478.825, 211.907 )
-}
 
 [node name="World" type="Node2D"]
 
@@ -62,6 +51,7 @@ tile_data = PoolIntArray( 131079, 11, 0, 393252, 55, 1, 524282, 31, 0, 524284, -
 
 [node name="HidingSpotLockerFront" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 414.953, 148.831 )
+PlayerNode = NodePath("../Player")
 
 [node name="HidingSpot" parent="YSort/HidingSpotLockerFront/HidingSpotLockerFront/LockerFrontSprite" index="0"]
 collision_layer = 16
@@ -72,10 +62,7 @@ position = Vector2( 420.233, 231.035 )
 
 [node name="HidingSpotLockerSide" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 229.035, 250.687 )
-
-[node name="HidingSpot" parent="YSort/HidingSpotLockerSide/LockerSideSprite" index="0"]
-collision_layer = 16
-collision_mask = 16
+PlayerNode = NodePath("../Player")
 
 [node name="Player" parent="YSort" groups=[
 "Player",
@@ -84,7 +71,7 @@ position = Vector2( -26.2958, 253.503 )
 collision_mask = 21
 
 [node name="AnimationTree" parent="YSort/Player" index="3"]
-parameters/playback = SubResource( 5 )
+parameters/playback = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 current = true
@@ -93,43 +80,6 @@ limit_top = 0
 limit_right = 640
 limit_bottom = 512
 
-[node name="Enemy" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 265.178, 196.76 )
-script = ExtResource( 10 )
-actual_dest = Vector2( 260, 195 )
-dest = Vector2( 150, 30 )
-dest2 = Vector2( 78, 192 )
-dest3 = Vector2( -26, 250 )
-
-[node name="AnimationTree" parent="YSort/Enemy" index="3"]
-parameters/playback = SubResource( 3 )
-
-[node name="DetectionZone" parent="YSort/Enemy" index="5"]
-script = ExtResource( 11 )
-
-[node name="Navigation2D" type="Navigation2D" parent="YSort/Enemy"]
-
-[node name="Line2D" type="Line2D" parent="YSort/Enemy"]
-width = 2.0
-
-[node name="Timer" type="Timer" parent="YSort/Enemy"]
-wait_time = 7.0
-autostart = true
-
-[node name="EnemyPath" type="Path2D" parent="."]
-position = Vector2( 25.3492, -28.7379 )
-curve = SubResource( 4 )
-
-[node name="PathFollow2D" type="PathFollow2D" parent="EnemyPath"]
-position = Vector2( 478.824, 211.907 )
-offset = 0.00158691
-rotate = false
-script = ExtResource( 12 )
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="EnemyPath/PathFollow2D"]
-update_rotation = false
-update_scale = false
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = -19.184
@@ -137,16 +87,8 @@ autoplay = true
 
 [connection signal="body_entered" from="YSort/HidingSpotLockerFront/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="YSort/Player" method="_on_HidingSpot_body_entered"]
 [connection signal="body_exited" from="YSort/HidingSpotLockerFront/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="YSort/Player" method="_on_HidingSpot_body_exited"]
-[connection signal="body_entered" from="YSort/HidingSpotLockersBack/LockersBackSprite/HidingSpot" to="YSort/Player" method="_on_HidingSpot_body_entered"]
-[connection signal="body_exited" from="YSort/HidingSpotLockersBack/LockersBackSprite/HidingSpot" to="YSort/Player" method="_on_HidingSpot_body_exited"]
-[connection signal="body_entered" from="YSort/HidingSpotLockerSide/LockerSideSprite/HidingSpot" to="YSort/Player" method="_on_HidingSpot_body_entered"]
-[connection signal="body_exited" from="YSort/HidingSpotLockerSide/LockerSideSprite/HidingSpot" to="YSort/Player" method="_on_HidingSpot_body_exited"]
-[connection signal="body_entered" from="YSort/Enemy/DetectionZone" to="YSort/Enemy/DetectionZone" method="_on_DetectionZone_body_entered"]
-[connection signal="body_exited" from="YSort/Enemy/DetectionZone" to="YSort/Enemy/DetectionZone" method="_on_DetectionZone_body_exited"]
-[connection signal="timeout" from="YSort/Enemy/Timer" to="YSort/Enemy" method="_on_Timer_timeout"]
 
 [editable path="YSort/HidingSpotLockerFront"]
 [editable path="YSort/HidingSpotLockersBack"]
 [editable path="YSort/HidingSpotLockerSide"]
 [editable path="YSort/Player"]
-[editable path="YSort/Enemy"]

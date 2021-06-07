@@ -424,7 +424,7 @@ start_node = "Idle"
 [sub_resource type="CircleShape2D" id=51]
 radius = 72.0
 
-[sub_resource type="GDScript" id=53]
+[sub_resource type="GDScript" id=52]
 script/source = "extends Node2D
 
 export(String, FILE) var next_scene = \"\"
@@ -434,7 +434,7 @@ func end_fade():
 		get_tree().change_scene(next_scene)
 "
 
-[sub_resource type="RectangleShape2D" id=54]
+[sub_resource type="RectangleShape2D" id=53]
 
 [node name="Level1" type="Node2D"]
 position = Vector2( -1, 0 )
@@ -442,6 +442,7 @@ position = Vector2( -1, 0 )
 [node name="Map" type="StaticBody2D" parent="."]
 
 [node name="DarkLight" parent="Map" instance=ExtResource( 4 )]
+visible = true
 
 [node name="Navigation2D" type="Navigation2D" parent="Map" groups=[
 "LevelNaviguation",
@@ -469,12 +470,11 @@ autoplay = true
 
 [node name="LOCKER_FRONT" parent="Entities" instance=ExtResource( 9 )]
 position = Vector2( 351.46, 8.90904 )
+PlayerNode = NodePath("../Player")
 
-[node name="HidingSpotLockersBack" parent="Entities" instance=ExtResource( 10 )]
-position = Vector2( 295.157, 280.118 )
-
-[node name="HidingSpot" parent="Entities/HidingSpotLockersBack/LockersBackSprite" index="0"]
-position = Vector2( 0, 0.594604 )
+[node name="LOCKER_BACK" parent="Entities" instance=ExtResource( 10 )]
+position = Vector2( 292.927, 279.046 )
+PlayerNode = NodePath("../Player")
 
 [node name="Player" parent="Entities" groups=[
 "Player",
@@ -501,6 +501,9 @@ parameters/playback = SubResource( 23 )
 
 [node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
 frames = SubResource( 26 )
+
+[node name="FlickeringLight" parent="Entities/Player" index="5"]
+position = Vector2( -0.468262, -4.776 )
 
 [node name="Zone" parent="Entities/Player/DetectionZone" index="0"]
 shape = SubResource( 27 )
@@ -563,12 +566,12 @@ dest2 = Vector2( 150, 260 )
 dest3 = Vector2( 480, 265 )
 
 [node name="Portal" parent="." instance=ExtResource( 12 )]
-position = Vector2( 680, 288 )
+position = Vector2( 684.365, 301.89 )
 next_scene_path = "res://scenes/level2/Level2.tscn"
 
 [node name="FadeToBlack" parent="Portal" instance=ExtResource( 14 )]
-position = Vector2( -297.227, -370.897 )
-script = SubResource( 53 )
+position = Vector2( -297.227, -371.133 )
+script = SubResource( 52 )
 next_scene = "res://scenes/level2/Level2.tscn"
 
 [node name="Voices" type="Node2D" parent="."]
@@ -581,12 +584,12 @@ volume_db = -3.03
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Voices/Voice1"]
 position = Vector2( 504, 96 )
-shape = SubResource( 54 )
+shape = SubResource( 53 )
 
-[connection signal="body_entered" from="Entities/LOCKER_FRONT/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
-[connection signal="body_exited" from="Entities/LOCKER_FRONT/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
-[connection signal="body_entered" from="Entities/HidingSpotLockersBack/LockersBackSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
-[connection signal="body_exited" from="Entities/HidingSpotLockersBack/LockersBackSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
+[connection signal="body_entered" from="Entities/LOCKER_FRONT/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
+[connection signal="body_exited" from="Entities/LOCKER_FRONT/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
+[connection signal="body_entered" from="Entities/LOCKER_BACK/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
+[connection signal="body_exited" from="Entities/LOCKER_BACK/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
 [connection signal="body_entered" from="Entities/Enemy/DetectionZone" to="Entities/Enemy/DetectionZone" method="_on_DetectionZone_body_entered"]
 [connection signal="body_exited" from="Entities/Enemy/DetectionZone" to="Entities/Enemy/DetectionZone" method="_on_DetectionZone_body_exited"]
 [connection signal="body_entered" from="Portal" to="Entities/Player" method="_on_Portal_body_entered"]
@@ -595,6 +598,6 @@ shape = SubResource( 54 )
 [connection signal="finished" from="Voices/Voice1/Voice1Audio" to="Entities/Player" method="_on_Voice1Audio_finished"]
 
 [editable path="Entities/LOCKER_FRONT"]
-[editable path="Entities/HidingSpotLockersBack"]
+[editable path="Entities/LOCKER_BACK"]
 [editable path="Entities/Player"]
 [editable path="Entities/Enemy"]

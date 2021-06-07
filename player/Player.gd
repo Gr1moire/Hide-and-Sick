@@ -17,9 +17,6 @@ onready var animationState = animationTree.get("parameters/playback")
 
 var velocity = Vector2.ZERO
 var state = MOVE
-var canHide = false
-var canInteract = false
-
 
 func _ready():
 	randomize()
@@ -52,26 +49,14 @@ func move_state(delta):
 func move():
 	velocity = move_and_slide(velocity)
 
-func _input(event):
-	if canHide:
-		if Input.is_action_just_pressed("hide") && !PlayerVariable.isHided:
-			PlayerVariable.isHided = true
-			visible = false
-			get_child(5).play()
-		elif Input.is_action_just_pressed("hide") && PlayerVariable.isHided:
-			PlayerVariable.isHided = false
-			visible = true
-
 func _on_HidingSpot_body_entered(body):
 	if body.is_in_group("player") :
-		canHide = true
-		print(body)	
+		PlayerVariable.canHide = true
 		get_child(4).visible = true
 
 func _on_HidingSpot_body_exited(body):
 	if body.is_in_group("player") :
-		canHide = false
-		print(body)
+		PlayerVariable.canHide = false
 		get_child(4).visible = false
 
 func _on_Portal_body_entered(body):

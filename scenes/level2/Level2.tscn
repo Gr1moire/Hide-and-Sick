@@ -30,7 +30,6 @@ script = ExtResource( 10 )
 [node name="Map" type="Node2D" parent="."]
 
 [node name="DarkLight" parent="Map" instance=ExtResource( 4 )]
-visible = true
 
 [node name="Navigation2D" type="Navigation2D" parent="Map" groups=[
 "LevelNaviguation",
@@ -71,28 +70,32 @@ collision_mask = 524309
 parameters/playback = SubResource( 1 )
 
 [node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
-frame = 1
+frame = 0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/Player"]
 remote_path = NodePath("../../../Camera2D")
 
 [node name="LOCKER_FRONT" parent="Entities" instance=ExtResource( 6 )]
 position = Vector2( 276.591, 500.486 )
+PlayerNode = NodePath("../Player")
 
 [node name="HidingSpotLockerFront" parent="Entities/LOCKER_FRONT" index="0"]
 collision_layer = 0
 
 [node name="LOCKER_FRONT2" parent="Entities" instance=ExtResource( 6 )]
 position = Vector2( 277.9, 95.7762 )
+PlayerNode = NodePath("../Player")
 
 [node name="HidingSpotLockerSide" parent="Entities" instance=ExtResource( 7 )]
 position = Vector2( 58.7993, 197.78 )
+PlayerNode = NodePath("../Player")
 
 [node name="EventZone" parent="Entities/HidingSpotLockerSide/LockerSideSprite/HidingSpot" index="0"]
 position = Vector2( 0, 29.5821 )
 
 [node name="HidingSpotLockerSide2" parent="Entities" instance=ExtResource( 7 )]
 position = Vector2( 502.778, 389.285 )
+PlayerNode = NodePath("../Player")
 
 [node name="Portal" parent="." instance=ExtResource( 8 )]
 position = Vector2( 39.956, 52.4408 )

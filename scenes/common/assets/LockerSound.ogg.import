@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/LockerSound.ogg-bbaa0668ba7e10f4360128022b544951.oggstr"
+
+[deps]
+
+source_file="res://scenes/common/assets/LockerSound.ogg"
+dest_files=[ "res://.import/LockerSound.ogg-bbaa0668ba7e10f4360128022b544951.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

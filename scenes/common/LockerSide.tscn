@@ -1,26 +1,37 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/common/assets/LockerSide.png" type="Texture" id=1]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 12.9861, 38.7508 )
+[ext_resource path="res://scenes/common/scripts/Lockers.gd" type="Script" id=2]
+[ext_resource path="res://scenes/common/assets/LockerSound.ogg" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 6.41072, 34.0609 )
 
-[node name="HidingSpotLockerSide" type="StaticBody2D"]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12.9861, 38.7508 )
 
-[node name="LockerSideSprite" type="Sprite" parent="."]
+[node name="LOCKER_SIDE" type="YSort"]
+script = ExtResource( 2 )
+
+[node name="HidingSpotLockerSide" type="StaticBody2D" parent="."]
+
+[node name="LockerSideSprite" type="Sprite" parent="HidingSpotLockerSide"]
 position = Vector2( -0.859703, -0.0165863 )
 texture = ExtResource( 1 )
 offset = Vector2( 5.3431, 22.4336 )
 
-[node name="HidingSpot" type="Area2D" parent="LockerSideSprite"]
+[node name="Collision" type="CollisionShape2D" parent="HidingSpotLockerSide"]
+position = Vector2( -0.280617, 34.7963 )
+shape = SubResource( 2 )
 
-[node name="EventZone" type="CollisionShape2D" parent="LockerSideSprite/HidingSpot"]
+[node name="HidingSpot" type="Area2D" parent="."]
+position = Vector2( -0.859703, -0.0165863 )
+
+[node name="EventZone" type="CollisionShape2D" parent="HidingSpot"]
 position = Vector2( 0, 30.0275 )
 shape = SubResource( 1 )
 
-[node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( -0.280617, 34.7963 )
-shape = SubResource( 2 )
+[node name="LockerSound" type="AudioStreamPlayer" parent="."]
+pause_mode = 1
+stream = ExtResource( 3 )
+volume_db = -6.058
