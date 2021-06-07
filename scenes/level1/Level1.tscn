@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://scenes/common/assets/DetailTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/assets/GroundTiles.tres" type="TileSet" id=2]
@@ -424,7 +424,9 @@ start_node = "Idle"
 [sub_resource type="CircleShape2D" id=51]
 radius = 72.0
 
-[sub_resource type="GDScript" id=52]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=52]
+
+[sub_resource type="GDScript" id=53]
 script/source = "extends Node2D
 
 export(String, FILE) var next_scene = \"\"
@@ -434,14 +436,14 @@ func end_fade():
 		get_tree().change_scene(next_scene)
 "
 
-[sub_resource type="RectangleShape2D" id=53]
+[sub_resource type="RectangleShape2D" id=54]
 
 [node name="Level1" type="Node2D"]
+position = Vector2( -1, 0 )
 
 [node name="Map" type="StaticBody2D" parent="."]
 
 [node name="DarkLight" parent="Map" instance=ExtResource( 4 )]
-visible = true
 
 [node name="Navigation2D" type="Navigation2D" parent="Map" groups=[
 "LevelNaviguation",
@@ -514,11 +516,11 @@ limit_right = 784
 limit_bottom = 512
 
 [node name="Enemy" parent="Entities" instance=ExtResource( 6 )]
-position = Vector2( 410.336, 30.5293 )
+position = Vector2( 155.539, 144.564 )
 playerPath = NodePath("../Player")
 actual_dest = Vector2( 420, 30 )
-dest = Vector2( 150, 130 )
-dest2 = Vector2( 420, 265 )
+dest = Vector2( 150, 30 )
+dest2 = Vector2( 150, 150 )
 dest3 = Vector2( 420, 30 )
 
 [node name="Player Collision" parent="Entities/Enemy" index="1"]
@@ -551,13 +553,24 @@ width = 2.0
 wait_time = 0.2
 autostart = true
 
+[node name="Enemy2" parent="Entities" instance=ExtResource( 6 )]
+position = Vector2( 485.075, 267.994 )
+playerPath = NodePath("../Player")
+actual_dest = Vector2( 150, 260 )
+dest = Vector2( 150, 150 )
+dest2 = Vector2( 150, 260 )
+dest3 = Vector2( 480, 265 )
+
+[node name="AnimationTree" parent="Entities/Enemy2" index="3"]
+parameters/playback = SubResource( 52 )
+
 [node name="Portal" parent="." instance=ExtResource( 12 )]
 position = Vector2( 680, 288 )
 next_scene_path = "res://scenes/level2/Level2.tscn"
 
 [node name="FadeToBlack" parent="Portal" instance=ExtResource( 14 )]
 position = Vector2( -297.227, -370.897 )
-script = SubResource( 52 )
+script = SubResource( 53 )
 next_scene = "res://scenes/level2/Level2.tscn"
 
 [node name="Voices" type="Node2D" parent="."]
@@ -570,7 +583,7 @@ volume_db = -3.03
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Voices/Voice1"]
 position = Vector2( 504, 96 )
-shape = SubResource( 53 )
+shape = SubResource( 54 )
 
 [connection signal="body_entered" from="Entities/LOCKER_FRONT/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
 [connection signal="body_exited" from="Entities/LOCKER_FRONT/HidingSpotLockerFront/LockerFrontSprite/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
@@ -587,3 +600,4 @@ shape = SubResource( 53 )
 [editable path="Entities/HidingSpotLockersBack"]
 [editable path="Entities/Player"]
 [editable path="Entities/Enemy"]
+[editable path="Entities/Enemy2"]
