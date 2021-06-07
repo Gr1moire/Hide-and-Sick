@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/Level3/Walls.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Level3/Roof.tres" type="TileSet" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://scenes/common/LockerSide.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/level1/assets/horror_loop.mp3" type="AudioStream" id=9]
 [ext_resource path="res://scenes/common/assets/TileA5_PHC_Interior-Hospital.png" type="Texture" id=10]
+[ext_resource path="res://scenes/common/Portal.tscn" type="PackedScene" id=11]
+[ext_resource path="res://cinematic/FadeToBlack.tscn" type="PackedScene" id=12]
 
 [sub_resource type="TileSet" id=1]
 0/name = "TileA5_PHC_Interior-Hospital.png 0"
@@ -114,12 +116,20 @@ volume_db = -25.242
 pitch_scale = 0.57
 autoplay = true
 
+[node name="Portal" parent="." instance=ExtResource( 11 )]
+position = Vector2( 551.975, -14.2845 )
+
+[node name="FadeToBlack" parent="Portal" instance=ExtResource( 12 )]
+next_scene = "res://scenes/final/Final.tscn"
+
 [connection signal="body_entered" from="Entities/LOCKER_FRONT/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
 [connection signal="body_exited" from="Entities/LOCKER_FRONT/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
 [connection signal="body_entered" from="Entities/LOCKER_SIDE/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
 [connection signal="body_exited" from="Entities/LOCKER_SIDE/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
 [connection signal="body_entered" from="Entities/LOCKER_BACK/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
 [connection signal="body_exited" from="Entities/LOCKER_BACK/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
+[connection signal="body_entered" from="Portal" to="Entities/Player" method="_on_Portal_body_entered"]
+[connection signal="body_exited" from="Portal" to="Entities/Player" method="_on_Portal_body_exited"]
 
 [editable path="Entities/LOCKER_FRONT"]
 [editable path="Entities/LOCKER_SIDE"]
