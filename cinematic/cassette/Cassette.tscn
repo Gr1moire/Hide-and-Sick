@@ -1,0 +1,67 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://cinematic/cassette/Cassette.gd" type="Script" id=1]
+[ext_resource path="res://cinematic/ending/ffinAudio.ogg" type="AudioStream" id=2]
+[ext_resource path="res://cinematic/cassette/TapeCassette_02.png" type="Texture" id=3]
+[ext_resource path="res://cinematic/cassette/TapeCassette_09.png" type="Texture" id=4]
+[ext_resource path="res://cinematic/cassette/TapeCassette_05.png" type="Texture" id=5]
+[ext_resource path="res://cinematic/cassette/TapeCassette_01.png" type="Texture" id=6]
+[ext_resource path="res://cinematic/cassette/TapeCassette_03.png" type="Texture" id=7]
+[ext_resource path="res://cinematic/cassette/TapeCassette_04.png" type="Texture" id=8]
+[ext_resource path="res://cinematic/cassette/TapeCassette_07.png" type="Texture" id=9]
+[ext_resource path="res://cinematic/cassette/TapeCassette_08.png" type="Texture" id=10]
+[ext_resource path="res://cinematic/cassette/TapeCassette_10.png" type="Texture" id=11]
+[ext_resource path="res://cinematic/cassette/TapeCassette_06.png" type="Texture" id=12]
+[ext_resource path="res://cinematic/FadeToBlack.tscn" type="PackedScene" id=13]
+
+[sub_resource type="AnimatedTexture" id=1]
+frames = 10
+frame_0/texture = ExtResource( 6 )
+frame_1/texture = ExtResource( 3 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 7 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 8 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 5 )
+frame_4/delay_sec = 0.0
+frame_5/texture = ExtResource( 12 )
+frame_5/delay_sec = 0.0
+frame_6/texture = ExtResource( 9 )
+frame_6/delay_sec = 0.0
+frame_7/texture = ExtResource( 10 )
+frame_7/delay_sec = 0.0
+frame_8/texture = ExtResource( 4 )
+frame_8/delay_sec = 0.0
+frame_9/texture = ExtResource( 11 )
+frame_9/delay_sec = 0.0
+
+[node name="Cassette" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+rect_clip_content = true
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 159.944, 80.1594 )
+scale = Vector2( 2.5, 2.5 )
+texture = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 2 )
+
+[node name="FadeToBlack" parent="." instance=ExtResource( 13 )]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
