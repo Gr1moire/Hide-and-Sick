@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://scenes/common/assets/DetailTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/assets/GroundTiles.tres" type="TileSet" id=2]
@@ -442,16 +442,6 @@ start_node = "Idle"
 [sub_resource type="CircleShape2D" id=52]
 radius = 72.0
 
-[sub_resource type="GDScript" id=52]
-script/source = "extends Node2D
-
-export(String, FILE) var next_scene = \"\"
-
-func end_fade():
-	if next_scene != \"\":
-		get_tree().change_scene(next_scene)
-"
-
 [sub_resource type="RectangleShape2D" id=53]
 
 [node name="Level1" type="Node2D"]
@@ -596,7 +586,6 @@ next_scene_path = "res://scenes/level2/Level2.tscn"
 [node name="FadeToBlack" parent="Portal" instance=ExtResource( 14 )]
 position = Vector2( -297.227, -371.133 )
 script = SubResource( 52 )
-next_scene = "res://scenes/level2/Level2.tscn"
 
 [node name="Voices" type="Node2D" parent="."]
 

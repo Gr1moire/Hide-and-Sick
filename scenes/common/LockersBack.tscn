@@ -16,15 +16,15 @@ script = ExtResource( 2 )
 [node name="HidingSpotLockersBack" type="StaticBody2D" parent="."]
 
 [node name="LockersBackSprite" type="Sprite" parent="HidingSpotLockersBack"]
+position = Vector2( -0.0411491, 3.35237 )
 texture = ExtResource( 1 )
+offset = Vector2( 0.0411491, -3.35237 )
 
 [node name="Collision" type="CollisionShape2D" parent="HidingSpotLockersBack"]
 position = Vector2( 0.21022, 3.57381 )
 shape = SubResource( 2 )
 
 [node name="HidingSpot" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 16
 
 [node name="EventZone" type="CollisionShape2D" parent="HidingSpot"]
 position = Vector2( 0, -3.67999 )
