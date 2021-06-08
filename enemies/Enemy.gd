@@ -55,6 +55,7 @@ func _process(delta):
 func chase_player(delta):
 	if playerDetected && !PlayerVariable.isHided:
 		accelerate_towards_point(player.global_position, delta)
+		#make_path_finding()
 	else:
 		make_path_finding()
 	move()
@@ -62,7 +63,9 @@ func chase_player(delta):
 func make_path_finding():
 	if levelNaviguation && player:
 		generate_path()
-		naviguate()
+	else:
+		generate_path_player()
+	naviguate()
 
 func accelerate_towards_point(point, delta):
 	var direction = global_position.direction_to(point)
@@ -80,6 +83,10 @@ func naviguate():
 		velocity = global_position.direction_to(path[1]) * SPEED
 		if global_position == path[0]:
 			path.pop_front()
+
+func generate_path_player():
+	if levelNaviguation:
+		path = levelNaviguation.get_simple_path(global_position, player.global_position, false)
 
 func generate_path():
 	if levelNaviguation:

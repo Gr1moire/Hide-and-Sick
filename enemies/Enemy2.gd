@@ -4,11 +4,11 @@ var speed = 0.1
 var move_direction = 0
 
 #########################
-const MAX_SPEED = 55
+const MAX_SPEED = 40
 const ACCELERATION = 300
 const FRICTION = 100
 
-onready var detection_zone = $DetectionZone
+onready var detection_zone = $PlayerDetection
 
 export(NodePath) var playerPath
 onready var player = get_node(playerPath)
