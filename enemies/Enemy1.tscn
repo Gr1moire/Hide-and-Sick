@@ -218,7 +218,6 @@ script = ExtResource( 5 )
 texture = ExtResource( 3 )
 offset = Vector2( 0.681637, -0.283983 )
 hframes = 8
-frame = 7
 region_enabled = true
 region_rect = Rect2( -1.56696, 6.00688, 145.383, 27.2875 )
 

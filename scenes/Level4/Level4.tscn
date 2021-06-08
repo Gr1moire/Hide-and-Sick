@@ -62,6 +62,7 @@
 [node name="Map" type="Node2D" parent="."]
 
 [node name="DarkLight" parent="Map" instance=ExtResource( 4 )]
+visible = true
 
 [node name="Ground" type="TileMap" parent="Map"]
 tile_set = ExtResource( 1 )

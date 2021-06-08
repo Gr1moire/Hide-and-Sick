@@ -451,6 +451,7 @@ position = Vector2( -1, 0 )
 [node name="Map" type="StaticBody2D" parent="."]
 
 [node name="DarkLight" parent="Map" instance=ExtResource( 4 )]
+visible = true
 
 [node name="Navigation2D" type="Navigation2D" parent="Map" groups=[
 "LevelNaviguation",
@@ -532,9 +533,6 @@ actual_dest = Vector2( 540, 30 )
 dest = Vector2( 150, 145 )
 dest2 = Vector2( 150, 30 )
 dest3 = Vector2( 540, 30 )
-
-[node name="Sprite" parent="Entities/Enemy" index="0"]
-frame = 0
 
 [node name="Player Collision" parent="Entities/Enemy" index="1"]
 shape = SubResource( 29 )

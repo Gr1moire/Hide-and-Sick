@@ -1,30 +1,24 @@
 extends KinematicBody2D
 
-var speed = 0.1
-var move_direction = 0
-
-#########################
 const MAX_SPEED = 40
 const ACCELERATION = 300
 const FRICTION = 100
+const SPEED = 40
 
 onready var detection_zone = $PlayerDetection
-
-export(NodePath) var playerPath
 onready var player = get_node(playerPath)
-var playerDetected := false
 onready var touch_player = $TouchPlayer
-
-var velocity = Vector2.DOWN
-
-const SPEED = 40
-var path: Array = []
-var levelNaviguation: Navigation2D = null
+onready var actual_direction = player_not_found
+onready var sprite = $Sprite
 
 export(Vector2) var player_not_found
+export(NodePath) var playerPath
 
-onready var actual_direction = player_not_found
-#########################
+var playerDetected := false
+var velocity = Vector2.DOWN
+var path: Array = []
+var levelNaviguation: Navigation2D = null
+var move_direction = 0
 
 func _ready():
 	randomize()
@@ -39,11 +33,7 @@ func _physics_process(delta):
 	var test = touch_player.touched_player
 	if test && PlayerVariable.isHided == false:
 		get_tree().change_scene("res://cinematic/getBackToYourBed.tscn")
-	
-func _process(delta):
 	AnimationLoop()
-
-#########################
 
 func chase_player(delta):
 	if PlayerVariable.isHided:
@@ -66,9 +56,9 @@ func accelerate_towards_point(point, delta):
 
 func move():
 	if velocity.x < 0:
-		$Sprite.set_flip_h(true)
+		sprite.set_flip_h(true)
 	else:
-		$Sprite.set_flip_h(false)
+		sprite.set_flip_h(false)
 	velocity = move_and_slide(velocity)
 
 func naviguate():
@@ -84,15 +74,6 @@ func generate_path():
 func generate_path_no_player():
 	if levelNaviguation:
 		path = levelNaviguation.get_simple_path(global_position, player_not_found, false)
-
-
-#########################
-
-#func MovementLoop(delta):
-#	var prepos = remote_transform.get_global_position()
-#	remote_transform.set_offset(remote_transform.get_offset() + speed + delta / 2)
-#	var pos = remote_transform.get_global_position()
-#	move_direction = (pos.angle_to_point(prepos) / 3.14) * 180 
 
 func AnimationLoop():
 	var animation_direction : String
@@ -117,10 +98,8 @@ func AnimationLoop():
 	print(animation_direction)
 	get_node("AnimationPlayer").play(animation_direction)
 
-
 func _on_DetectionZone_body_entered(_body):
 	playerDetected = true
-
 
 func _on_DetectionZone_body_exited(_body):
 	playerDetected = false

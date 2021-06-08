@@ -52,6 +52,7 @@ func end_fade():
 [node name="Map" type="Node2D" parent="."]
 
 [node name="DarkLight" parent="Map" instance=ExtResource( 4 )]
+visible = true
 
 [node name="Ground" type="TileMap" parent="Map"]
 tile_set = ExtResource( 6 )
@@ -81,9 +82,6 @@ collision_mask = 533
 
 [node name="AnimationTree" parent="Entities/Player" index="3"]
 parameters/playback = SubResource( 2 )
-
-[node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
-frame = 1
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/Player"]
 remote_path = NodePath("../../../Camera2D")
