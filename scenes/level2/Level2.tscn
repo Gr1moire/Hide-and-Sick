@@ -77,7 +77,6 @@ script = ExtResource( 10 )
 [node name="Map" type="Node2D" parent="."]
 
 [node name="DarkLight" parent="Map" instance=ExtResource( 4 )]
-visible = true
 
 [node name="Navigation2D" type="Navigation2D" parent="Map" groups=[
 "LevelNaviguation",
@@ -117,7 +116,7 @@ position = Vector2( 617.305, 454.265 )
 parameters/playback = SubResource( 2 )
 
 [node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
-frame = 0
+frame = 1
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/Player"]
 remote_path = NodePath("../../../Camera2D")
@@ -131,12 +130,20 @@ dest2 = Vector2( 360, 530 )
 dest3 = Vector2( 520, 530 )
 
 [node name="Enemy2" parent="Entities" instance=ExtResource( 9 )]
-position = Vector2( 266, 339 )
+position = Vector2( 280.787, 138.737 )
 playerPath = NodePath("../Player")
-actual_dest = Vector2( 520, 335 )
-dest = Vector2( 520, 140 )
-dest2 = Vector2( 40, 140 )
-dest3 = Vector2( 265, 340 )
+actual_dest = Vector2( 80.214, 137.321 )
+dest = Vector2( 526.666, 134.49 )
+dest2 = Vector2( 527.138, 258.137 )
+dest3 = Vector2( 80.214, 137.321 )
+
+[node name="Enemy3" parent="Entities" instance=ExtResource( 9 )]
+position = Vector2( 521.382, 335.135 )
+playerPath = NodePath("../Player")
+actual_dest = Vector2( 521.382, 335.135 )
+dest = Vector2( 39.128, 322.522 )
+dest2 = Vector2( 32.549, 174.604 )
+dest3 = Vector2( 521.382, 335.135 )
 
 [node name="LOCKER_FRONT" parent="Entities" instance=ExtResource( 6 )]
 position = Vector2( 276.591, 500.486 )
