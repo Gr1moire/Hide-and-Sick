@@ -12,6 +12,8 @@ config_version=4
 
 config/name="Hide and sick"
 run/main_scene="res://menus/Menu.tscn"
+boot_splash/image="res://ui/aled.png"
+boot_splash/use_filter=false
 config/icon="res://icon.png"
 
 [autoload]
