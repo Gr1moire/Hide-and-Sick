@@ -108,19 +108,10 @@ current = true
 
 [node name="Entities" type="YSort" parent="."]
 
-[node name="Enemy" parent="Entities" instance=ExtResource( 9 )]
-position = Vector2( 363.515, 527.017 )
-playerPath = NodePath("../Player")
-actual_dest = Vector2( 270, 340 )
-dest = Vector2( 190, 140 )
-dest2 = Vector2( 280, 330 )
-dest3 = Vector2( 380, 541 )
-
 [node name="Player" parent="Entities" groups=[
 "Player",
 ] instance=ExtResource( 5 )]
 position = Vector2( 617.305, 454.265 )
-collision_mask = 524309
 
 [node name="AnimationTree" parent="Entities/Player" index="3"]
 parameters/playback = SubResource( 2 )
@@ -130,6 +121,22 @@ frame = 1
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/Player"]
 remote_path = NodePath("../../../Camera2D")
+
+[node name="Enemy" parent="Entities" instance=ExtResource( 9 )]
+position = Vector2( 522.515, 534.017 )
+playerPath = NodePath("../Player")
+actual_dest = Vector2( 360, 530 )
+dest = Vector2( 55, 530 )
+dest2 = Vector2( 360, 530 )
+dest3 = Vector2( 520, 530 )
+
+[node name="Enemy2" parent="Entities" instance=ExtResource( 9 )]
+position = Vector2( 266, 339 )
+playerPath = NodePath("../Player")
+actual_dest = Vector2( 520, 335 )
+dest = Vector2( 520, 140 )
+dest2 = Vector2( 40, 140 )
+dest3 = Vector2( 265, 340 )
 
 [node name="LOCKER_FRONT" parent="Entities" instance=ExtResource( 6 )]
 position = Vector2( 276.591, 500.486 )

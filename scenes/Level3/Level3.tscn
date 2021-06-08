@@ -88,13 +88,9 @@ tile_data = PoolIntArray( 2, 57, 0, 65551, 14, 0, 65552, 15, 0, 65553, 14, 0, 65
 [node name="Player" parent="Entities" instance=ExtResource( 5 )]
 position = Vector2( 55.3585, 44.0786 )
 collision_layer = 528
-collision_mask = 533
 
 [node name="AnimationTree" parent="Entities/Player" index="3"]
 parameters/playback = SubResource( 2 )
-
-[node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
-frame = 1
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/Player"]
 remote_path = NodePath("../../../Camera2D")
