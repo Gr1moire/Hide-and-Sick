@@ -510,7 +510,6 @@ parameters/playback = SubResource( 24 )
 
 [node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
 frames = SubResource( 27 )
-frame = 1
 
 [node name="FlickeringLight" parent="Entities/Player" index="5"]
 position = Vector2( -0.468262, -4.776 )
