@@ -96,7 +96,8 @@ tile_data = PoolIntArray( -196590, 31, 0, -196578, 31, 0, -196571, 32, 0, -13105
 
 [node name="Player" parent="Entities" instance=ExtResource( 5 )]
 position = Vector2( 375.537, 548.686 )
-collision_mask = 524293
+collision_layer = 514
+collision_mask = 524309
 
 [node name="Camera2D" type="Camera2D" parent="Entities/Player"]
 position = Vector2( 0.123169, 3.36633 )
