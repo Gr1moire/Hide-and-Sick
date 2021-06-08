@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/Level3/Walls.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Level3/Roof.tres" type="TileSet" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://cinematic/FadeToBlack.tscn" type="PackedScene" id=12]
 [ext_resource path="res://voices/VoicePlayer.tscn" type="PackedScene" id=13]
 [ext_resource path="res://enemies/Enemy1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://enemies/Enemy2.tscn" type="PackedScene" id=15]
 
 [sub_resource type="TileSet" id=1]
 0/name = "TileA5_PHC_Interior-Hospital.png 0"
@@ -97,11 +98,24 @@ tile_data = PoolIntArray( -196590, 31, 0, -196578, 31, 0, -196571, 32, 0, -13105
 [node name="Player" parent="Entities" instance=ExtResource( 5 )]
 position = Vector2( 375.537, 548.686 )
 collision_layer = 514
-collision_mask = 524309
+collision_mask = 533
 
 [node name="Camera2D" type="Camera2D" parent="Entities/Player"]
 position = Vector2( 0.123169, 3.36633 )
 current = true
+
+[node name="Enemy" parent="Entities" instance=ExtResource( 14 )]
+position = Vector2( 252.685, 554.756 )
+playerPath = NodePath("../Player")
+actual_dest = Vector2( 200, 560 )
+dest = Vector2( 140, 400 )
+dest2 = Vector2( 255, 400 )
+dest3 = Vector2( 200, 560 )
+
+[node name="Enemy3" parent="Entities" instance=ExtResource( 15 )]
+position = Vector2( 492, 552 )
+player_not_found = Vector2( 200, 560 )
+playerPath = NodePath("../Player")
 
 [node name="LOCKER_FRONT" parent="Entities" instance=ExtResource( 7 )]
 position = Vector2( 404.679, 369.421 )
@@ -114,30 +128,6 @@ PlayerNode = NodePath("../Player")
 [node name="LOCKER_BACK" parent="Entities" instance=ExtResource( 6 )]
 position = Vector2( 576.815, 215.005 )
 PlayerNode = NodePath("../Player")
-
-[node name="Enemy" parent="Entities" instance=ExtResource( 14 )]
-position = Vector2( 200.433, 551.274 )
-playerPath = NodePath("../Player")
-actual_dest = Vector2( 195, 555 )
-dest = Vector2( 140, 400 )
-dest2 = Vector2( 255, 400 )
-dest3 = Vector2( 200, 555 )
-
-[node name="Enemy2" parent="Entities" instance=ExtResource( 14 )]
-position = Vector2( 550.078, 558.666 )
-playerPath = NodePath("../Player")
-actual_dest = Vector2( 550, 560 )
-dest = Vector2( 600, 400 )
-dest2 = Vector2( 495, 400 )
-dest3 = Vector2( 550, 560 )
-
-[node name="Enemy3" parent="Entities" instance=ExtResource( 14 )]
-position = Vector2( 463.726, 209.014 )
-playerPath = NodePath("../Player")
-actual_dest = Vector2( 460, 200 )
-dest = Vector2( 605, 170 )
-dest2 = Vector2( 460, 15 )
-dest3 = Vector2( 255, 210 )
 
 [node name="Roof" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )

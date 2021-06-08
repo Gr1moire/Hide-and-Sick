@@ -102,11 +102,6 @@ remote_path = NodePath("../../../Camera2D")
 [node name="Camera2D" type="Camera2D" parent="Entities/Player"]
 current = true
 
-[node name="Enemy2" parent="Entities" instance=ExtResource( 13 )]
-position = Vector2( 525, 395 )
-player_not_found = Vector2( 520, 390 )
-playerPath = NodePath("../Player")
-
 [node name="Enemy" parent="Entities" instance=ExtResource( 14 )]
 position = Vector2( 288.826, 237.384 )
 playerPath = NodePath("../Player")
@@ -114,6 +109,11 @@ actual_dest = Vector2( 290, 240 )
 dest = Vector2( 520, 240 )
 dest2 = Vector2( 410, 50 )
 dest3 = Vector2( 90, 240 )
+
+[node name="Enemy2" parent="Entities" instance=ExtResource( 13 )]
+position = Vector2( 525, 395 )
+player_not_found = Vector2( 520, 390 )
+playerPath = NodePath("../Player")
 
 [node name="LOCKER_FRONT" parent="Entities" instance=ExtResource( 3 )]
 position = Vector2( 169, 13.5 )
