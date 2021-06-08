@@ -452,6 +452,7 @@ position = Vector2( -1, 0 )
 [node name="Map" type="StaticBody2D" parent="."]
 
 [node name="DarkLight" parent="Map" instance=ExtResource( 4 )]
+visible = true
 
 [node name="Navigation2D" type="Navigation2D" parent="Map" groups=[
 "LevelNaviguation",
@@ -510,6 +511,7 @@ parameters/playback = SubResource( 24 )
 
 [node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
 frames = SubResource( 27 )
+frame = 1
 
 [node name="FlickeringLight" parent="Entities/Player" index="5"]
 position = Vector2( -0.468262, -4.776 )
