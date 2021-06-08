@@ -11,5 +11,5 @@ dest_files=[ "res://.import/ffinAudio.ogg-9acae48171d1b6a2d9a94a84382bd814.oggst
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
