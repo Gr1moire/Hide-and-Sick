@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/Level3/Walls.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Level3/Roof.tres" type="TileSet" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://scenes/common/assets/TileA5_PHC_Interior-Hospital.png" type="Texture" id=11]
 [ext_resource path="res://cinematic/FadeToBlack.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/level1/assets/horror_loop.mp3" type="AudioStream" id=13]
+[ext_resource path="res://voices/VoicePlayer.tscn" type="PackedScene" id=14]
 
 [sub_resource type="TileSet" id=1]
 0/name = "TileA5_PHC_Interior-Hospital.png 0"
@@ -48,6 +49,27 @@ func end_fade():
 	if next_scene != \"\":
 		get_tree().change_scene(next_scene)
 "
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Area2D
+
+### Le fichier de la variable export DOIT être le fichier audio (.mp3, .ogg, etc) ###
+## Surtout pas le .import. ### 
+
+export (String, FILE) var Voiceline
+
+func _on_VoiceAudio_finished():
+	$VoiceAudio.queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 26.4772, 8.92969 )
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 59.9577
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 11.4106, 27.6797 )
 
 [node name="Level2" type="Node2D"]
 script = ExtResource( 10 )
@@ -103,6 +125,9 @@ collision_mask = 524309
 [node name="AnimationTree" parent="Entities/Player" index="3"]
 parameters/playback = SubResource( 2 )
 
+[node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
+frame = 1
+
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/Player"]
 remote_path = NodePath("../../../Camera2D")
 
@@ -135,9 +160,34 @@ position = Vector2( 39.956, 52.4408 )
 position = Vector2( 1.12373, -2.43475 )
 
 [node name="FadeToBlack" parent="Portal" instance=ExtResource( 12 )]
-position = Vector2( -229.879, -345.08 )
+position = Vector2( -229.879, -345.552 )
 script = SubResource( 3 )
 next_scene = "res://scenes/Level3/Level3.tscn"
+
+[node name="Voices" type="Node2D" parent="."]
+
+[node name="VoiceArea" parent="Voices" instance=ExtResource( 14 )]
+position = Vector2( 618.046, 482.68 )
+script = SubResource( 4 )
+Voiceline = "res://voices/Les_autres.mp3"
+
+[node name="CollisionShape2D" parent="Voices/VoiceArea" index="0"]
+position = Vector2( -1.16516, 3.41684 )
+shape = SubResource( 5 )
+
+[node name="VoiceArea2" parent="Voices" instance=ExtResource( 14 )]
+Voiceline = "res://voices/Le_silence.mp3"
+
+[node name="CollisionShape2D" parent="Voices/VoiceArea2" index="0"]
+position = Vector2( 517.036, 141.796 )
+shape = SubResource( 6 )
+
+[node name="VoiceArea3" parent="Voices" instance=ExtResource( 14 )]
+Voiceline = "res://voices/Plus_malin.mp3"
+
+[node name="CollisionShape2D" parent="Voices/VoiceArea3" index="0"]
+position = Vector2( 78.1783, 536.216 )
+shape = SubResource( 7 )
 
 [node name="BacgrouondMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
@@ -162,3 +212,6 @@ autoplay = true
 [editable path="Entities/HidingSpotLockerSide"]
 [editable path="Entities/HidingSpotLockerSide2"]
 [editable path="Portal"]
+[editable path="Voices/VoiceArea"]
+[editable path="Voices/VoiceArea2"]
+[editable path="Voices/VoiceArea3"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/La_liberte_est_a_toi.mp3-712f9487c303ed0fe0249200c9933391.mp3str"
+
+[deps]
+
+source_file="res://voices/La_liberte_est_a_toi.mp3"
+dest_files=[ "res://.import/La_liberte_est_a_toi.mp3-712f9487c303ed0fe0249200c9933391.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

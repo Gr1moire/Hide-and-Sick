@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Si_proche.mp3-f72a3a3c4051bf6df7f6723238547f98.mp3str"
+
+[deps]
+
+source_file="res://voices/Si_proche.mp3"
+dest_files=[ "res://.import/Si_proche.mp3-f72a3a3c4051bf6df7f6723238547f98.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

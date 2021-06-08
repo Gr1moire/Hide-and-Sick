@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Bout_du_couloir.mp3-f884d14c4fc1350669a75ce01c688af3.mp3str"
+
+[deps]
+
+source_file="res://voices/Bout_du_couloir.mp3"
+dest_files=[ "res://.import/Bout_du_couloir.mp3-f884d14c4fc1350669a75ce01c688af3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

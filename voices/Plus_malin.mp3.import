@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Plus_malin.mp3-e33d678a67e3bbb36e5a8f62efcb279a.mp3str"
+
+[deps]
+
+source_file="res://voices/Plus_malin.mp3"
+dest_files=[ "res://.import/Plus_malin.mp3-e33d678a67e3bbb36e5a8f62efcb279a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

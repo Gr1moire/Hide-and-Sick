@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Traverser_cet_enfer.mp3-481ae7d0a8d88ae43ead10a4eeb70d0b.mp3str"
+
+[deps]
+
+source_file="res://voices/Traverser_cet_enfer.mp3"
+dest_files=[ "res://.import/Traverser_cet_enfer.mp3-481ae7d0a8d88ae43ead10a4eeb70d0b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

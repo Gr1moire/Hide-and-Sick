@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/Level3/Walls.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Level3/Roof.tres" type="TileSet" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://scenes/common/assets/TileA5_PHC_Interior-Hospital.png" type="Texture" id=10]
 [ext_resource path="res://scenes/common/Portal.tscn" type="PackedScene" id=11]
 [ext_resource path="res://cinematic/FadeToBlack.tscn" type="PackedScene" id=12]
+[ext_resource path="res://voices/VoicePlayer.tscn" type="PackedScene" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "TileA5_PHC_Interior-Hospital.png 0"
@@ -56,6 +57,9 @@
 1/shape_one_way_margin = 0.0
 1/shapes = [  ]
 1/z_index = 0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 134.542
 
 [node name="Level4" type="Node2D"]
 
@@ -111,6 +115,24 @@ PlayerNode = NodePath("../Player")
 position = Vector2( 576.815, 215.005 )
 PlayerNode = NodePath("../Player")
 
+[node name="Voices" type="Node2D" parent="."]
+
+[node name="VoiceArea" parent="Voices" instance=ExtResource( 13 )]
+position = Vector2( 147.055, 241.823 )
+Voiceline = "res://voices/Bout_du_couloir.mp3"
+
+[node name="VoiceArea2" parent="Voices" instance=ExtResource( 13 )]
+position = Vector2( 357.1, 17.6232 )
+Voiceline = "res://voices/La_liberte_est_a_toi.mp3"
+
+[node name="CollisionShape2D" parent="Voices/VoiceArea2" index="0"]
+position = Vector2( 179.57, 11.8921 )
+shape = SubResource( 2 )
+
+[node name="VoiceArea3" parent="Voices" instance=ExtResource( 13 )]
+position = Vector2( 375.334, 559.559 )
+Voiceline = "res://voices/Si_proche.mp3"
+
 [node name="BacgrouondMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 volume_db = -25.242
@@ -121,6 +143,7 @@ autoplay = true
 position = Vector2( 551.975, -14.2845 )
 
 [node name="FadeToBlack" parent="Portal" instance=ExtResource( 12 )]
+position = Vector2( 0.630005, 52.9167 )
 next_scene = "res://scenes/final/Final.tscn"
 
 [connection signal="body_entered" from="Entities/LOCKER_FRONT/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
@@ -135,3 +158,4 @@ next_scene = "res://scenes/final/Final.tscn"
 [editable path="Entities/LOCKER_FRONT"]
 [editable path="Entities/LOCKER_SIDE"]
 [editable path="Entities/LOCKER_BACK"]
+[editable path="Voices/VoiceArea2"]

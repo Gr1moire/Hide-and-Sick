@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/common/assets/DetailTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/LockerSide.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scenes/level1/assets/horror_loop.mp3" type="AudioStream" id=9]
 [ext_resource path="res://cinematic/FadeToBlack.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/common/assets/TileA5_PHC_Interior-Hospital.png" type="Texture" id=11]
+[ext_resource path="res://voices/VoicePlayer.tscn" type="PackedScene" id=12]
 
 [sub_resource type="TileSet" id=1]
 0/name = "TileA5_PHC_Interior-Hospital.png 0"
@@ -46,6 +47,9 @@ func end_fade():
 	if next_scene != \"\":
 		get_tree().change_scene(next_scene)
 "
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 16.8242, 16.5317 )
 
 [node name="Level3" type="Node2D"]
 
@@ -123,9 +127,30 @@ tile_data = PoolIntArray( -655369, 6, 131081, -655368, 6, 131083, -655367, 6, 13
 position = Vector2( 297.227, 370.897 )
 
 [node name="FadeToBlack" parent="Portal" instance=ExtResource( 10 )]
-position = Vector2( -297.227, -370.897 )
+position = Vector2( -285.101, -371.369 )
 script = SubResource( 3 )
 next_scene = "res://scenes/Level4/Level4.tscn"
+
+[node name="Voices" type="Node2D" parent="."]
+
+[node name="VoiceArea" parent="Voices" instance=ExtResource( 12 )]
+Voiceline = "res://voices/Des_couloirs.mp3"
+
+[node name="CollisionShape2D" parent="Voices/VoiceArea" index="0"]
+position = Vector2( 527.218, 91.6187 )
+shape = SubResource( 4 )
+
+[node name="VoiceArea2" parent="Voices" instance=ExtResource( 12 )]
+Voiceline = "res://voices/Traverser_cet_enfer.mp3"
+
+[node name="CollisionShape2D" parent="Voices/VoiceArea2" index="0"]
+position = Vector2( 58.9921, 56.1605 )
+
+[node name="VoiceArea3" parent="Voices" instance=ExtResource( 12 )]
+Voiceline = "res://voices/y_arriver.mp3"
+
+[node name="CollisionShape2D" parent="Voices/VoiceArea3" index="0"]
+position = Vector2( 205.293, 400.203 )
 
 [node name="BacgrouondMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
@@ -149,3 +174,6 @@ autoplay = true
 [editable path="Entities/LOCKER_FRONT2"]
 [editable path="Entities/LOCKER_SIDE"]
 [editable path="Entities/LOCKER_SIDE2"]
+[editable path="Voices/VoiceArea"]
+[editable path="Voices/VoiceArea2"]
+[editable path="Voices/VoiceArea3"]

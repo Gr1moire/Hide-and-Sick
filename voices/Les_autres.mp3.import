@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Les_autres.mp3-3b52d1da6948fd63c0bdbfbc41fbbcc3.mp3str"
+
+[deps]
+
+source_file="res://voices/Les_autres.mp3"
+dest_files=[ "res://.import/Les_autres.mp3-3b52d1da6948fd63c0bdbfbc41fbbcc3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

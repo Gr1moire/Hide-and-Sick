@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://scenes/common/assets/DetailTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/assets/GroundTiles.tres" type="TileSet" id=2]
@@ -443,13 +443,15 @@ start_node = "Idle"
 [sub_resource type="CircleShape2D" id=52]
 radius = 72.0
 
+[sub_resource type="RectangleShape2D" id=53]
+extents = Vector2( 15.043, 13.6409 )
+
 [node name="Level1" type="Node2D"]
 position = Vector2( -1, 0 )
 
 [node name="Map" type="StaticBody2D" parent="."]
 
 [node name="DarkLight" parent="Map" instance=ExtResource( 4 )]
-visible = true
 
 [node name="Navigation2D" type="Navigation2D" parent="Map" groups=[
 "LevelNaviguation",
@@ -508,7 +510,6 @@ parameters/playback = SubResource( 24 )
 
 [node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
 frames = SubResource( 27 )
-frame = 1
 
 [node name="FlickeringLight" parent="Entities/Player" index="5"]
 position = Vector2( -0.468262, -4.776 )
@@ -582,6 +583,10 @@ tile_data = PoolIntArray( -655360, 9, 0, -655359, 9, 0, -655358, 9, 0, -655357, 
 [node name="VoiceArea" parent="Audio" instance=ExtResource( 13 )]
 Voiceline = "res://voices/Les_casiers.mp3"
 
+[node name="CollisionShape2D" parent="Audio/VoiceArea" index="0"]
+position = Vector2( 502.969, 142.079 )
+shape = SubResource( 53 )
+
 [node name="BacgrouondMusic" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 5 )
 volume_db = -25.242
@@ -592,6 +597,7 @@ autoplay = true
 position = Vector2( 680.061, 287.882 )
 
 [node name="FadeToBlack" parent="Portal" instance=ExtResource( 14 )]
+position = Vector2( 0.15802, -0.944946 )
 next_scene = "res://scenes/level2/Level2.tscn"
 
 [connection signal="body_entered" from="Entities/LOCKER_FRONT/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_entered"]
@@ -607,4 +613,5 @@ next_scene = "res://scenes/level2/Level2.tscn"
 [editable path="Entities/LOCKER_BACK"]
 [editable path="Entities/Player"]
 [editable path="Entities/Enemy"]
+[editable path="Audio/VoiceArea"]
 [editable path="Portal"]
