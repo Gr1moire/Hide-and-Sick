@@ -60,6 +60,7 @@ autostart = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 2 )
+autoplay = true
 
 [node name="FadeToBlack" parent="." instance=ExtResource( 13 )]
 next_scene = "res://menus/Menu.tscn"
