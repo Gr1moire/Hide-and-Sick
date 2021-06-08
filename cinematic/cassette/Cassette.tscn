@@ -60,6 +60,7 @@ autostart = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 2 )
+volume_db = 6.058
 autoplay = true
 
 [node name="FadeToBlack" parent="." instance=ExtResource( 13 )]

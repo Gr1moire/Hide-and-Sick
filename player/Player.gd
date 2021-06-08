@@ -66,11 +66,3 @@ func _on_Portal_body_entered(body):
 func _on_Portal_body_exited(body):
 	PlayerVariable.canInteract = false
 	get_child(4).visible = false
-
-func _on_Voice1_body_entered(body):
-	if get_node("../../Audio/Voice1/Voice1Audio"):
-		if body.is_in_group("player") && !get_node("../../Audio/Voice1/Voice1Audio").playing:
-			get_node("../../Audio/Voice1/Voice1Audio").play()
-
-func _on_Voice1Audio_finished():
-	get_node("../../Audio/Voice1/Voice1Audio").queue_free()

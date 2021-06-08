@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://scenes/common/assets/DetailTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/common/assets/GroundTiles.tres" type="TileSet" id=2]
@@ -12,7 +12,7 @@
 [ext_resource path="res://scenes/common/LockersBack.tscn" type="PackedScene" id=10]
 [ext_resource path="res://player/SpaceButtonAnimation.png" type="Texture" id=11]
 [ext_resource path="res://scenes/common/Portal.tscn" type="PackedScene" id=12]
-[ext_resource path="res://voices/Les_casiers.mp3" type="AudioStream" id=13]
+[ext_resource path="res://voices/VoicePlayer.tscn" type="PackedScene" id=13]
 [ext_resource path="res://cinematic/FadeToBlack.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/Level3/Roof.tres" type="TileSet" id=15]
 
@@ -443,8 +443,6 @@ start_node = "Idle"
 [sub_resource type="CircleShape2D" id=52]
 radius = 72.0
 
-[sub_resource type="RectangleShape2D" id=53]
-
 [node name="Level1" type="Node2D"]
 position = Vector2( -1, 0 )
 
@@ -510,6 +508,7 @@ parameters/playback = SubResource( 24 )
 
 [node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
 frames = SubResource( 27 )
+frame = 1
 
 [node name="FlickeringLight" parent="Entities/Player" index="5"]
 position = Vector2( -0.468262, -4.776 )
@@ -580,15 +579,8 @@ tile_data = PoolIntArray( -655360, 9, 0, -655359, 9, 0, -655358, 9, 0, -655357, 
 
 [node name="Audio" type="Node2D" parent="."]
 
-[node name="Voice1" type="Area2D" parent="Audio"]
-
-[node name="Voice1Audio" type="AudioStreamPlayer" parent="Audio/Voice1"]
-stream = ExtResource( 13 )
-volume_db = -3.03
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Audio/Voice1"]
-position = Vector2( 504.562, 140.762 )
-shape = SubResource( 53 )
+[node name="VoiceArea" parent="Audio" instance=ExtResource( 13 )]
+Voiceline = "res://voices/Les_casiers.mp3"
 
 [node name="BacgrouondMusic" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 5 )
@@ -608,8 +600,6 @@ next_scene = "res://scenes/level2/Level2.tscn"
 [connection signal="body_exited" from="Entities/LOCKER_BACK/HidingSpot" to="Entities/Player" method="_on_HidingSpot_body_exited"]
 [connection signal="body_entered" from="Entities/Enemy/DetectionZone" to="Entities/Enemy/DetectionZone" method="_on_DetectionZone_body_entered"]
 [connection signal="body_exited" from="Entities/Enemy/DetectionZone" to="Entities/Enemy/DetectionZone" method="_on_DetectionZone_body_exited"]
-[connection signal="body_entered" from="Audio/Voice1" to="Entities/Player" method="_on_Voice1_body_entered"]
-[connection signal="finished" from="Audio/Voice1/Voice1Audio" to="Entities/Player" method="_on_Voice1Audio_finished"]
 [connection signal="body_entered" from="Portal" to="Entities/Player" method="_on_Portal_body_entered"]
 [connection signal="body_exited" from="Portal" to="Entities/Player" method="_on_Portal_body_exited"]
 
