@@ -14,14 +14,9 @@ autostart = true
 [node name="FadeToBlack" parent="." instance=ExtResource( 3 )]
 next_scene = "res://menus/Menu.tscn"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-margin_right = 1920.0
-margin_bottom = 1080.0
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 160, 90 )
+scale = Vector2( 0.167, 0.167 )
 texture = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
