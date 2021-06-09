@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/Level3/Walls.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Level3/Roof.tres" type="TileSet" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://scenes/common/LockerSide.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/common/Portal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://enemies/Enemy1.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/level2/Level2.gd" type="Script" id=10]
 [ext_resource path="res://scenes/common/assets/TileA5_PHC_Interior-Hospital.png" type="Texture" id=11]
 [ext_resource path="res://cinematic/FadeToBlack.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/level1/assets/horror_loop.mp3" type="AudioStream" id=13]
@@ -72,11 +71,11 @@ radius = 59.9577
 extents = Vector2( 11.4106, 27.6797 )
 
 [node name="Level2" type="Node2D"]
-script = ExtResource( 10 )
 
 [node name="Map" type="Node2D" parent="."]
 
 [node name="DarkLight" parent="Map" instance=ExtResource( 4 )]
+visible = true
 
 [node name="Navigation2D" type="Navigation2D" parent="Map" groups=[
 "LevelNaviguation",

@@ -264,7 +264,6 @@ parameters/Walk/blend_position = Vector2( 0.0519782, -0.11547 )
 visible = false
 position = Vector2( 0, -17.3625 )
 frames = SubResource( 26 )
-frame = 1
 playing = true
 
 [node name="FlickeringLight" type="Light2D" parent="."]

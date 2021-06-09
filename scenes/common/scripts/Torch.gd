@@ -15,11 +15,3 @@ func _physics_process(_delta):
 		value = 0.0
 	var alpha = ((noise.get_noise_1d(value) + 1) / 4.0) + 0.5
 	self.color = Color(color.r, color.g, color.b, alpha)
-
-
-func _on_HidingSpot_body_entered(body):
-	pass # Replace with function body.
-
-
-func _on_HidingSpot_body_exited(body):
-	pass # Replace with function body.

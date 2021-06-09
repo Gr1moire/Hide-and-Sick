@@ -50,6 +50,7 @@ position = Vector2( -0.210205, 0.420448 )
 
 [node name="Player" parent="Entities" instance=ExtResource( 5 )]
 position = Vector2( 312.607, 109.337 )
+script = null
 
 [node name="Camera2D" type="Camera2D" parent="Entities/Player"]
 position = Vector2( 0.144562, 6.91518 )
