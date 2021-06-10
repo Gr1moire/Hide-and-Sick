@@ -93,7 +93,7 @@ collision_layer = 528
 parameters/playback = SubResource( 2 )
 
 [node name="PressSpaceAnimation" parent="Entities/Player" index="4"]
-frame = 1
+frame = 0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/Player"]
 remote_path = NodePath("../../../Camera2D")

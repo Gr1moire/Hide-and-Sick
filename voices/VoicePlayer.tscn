@@ -3,14 +3,14 @@
 [ext_resource path="res://voices/VoiceAudio.gd" type="Script" id=1]
 [ext_resource path="res://voices/VoiceArea.gd" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 21.2507, 8.92969 )
 
 [node name="VoiceArea" type="Area2D"]
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="VoiceAudio" type="AudioStreamPlayer" parent="."]
 volume_db = -3.03

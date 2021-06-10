@@ -95,7 +95,6 @@ func AnimationLoop():
 		animation_direction = "Walk Left"
 	else:
 		animation_direction = "Walk Left"
-	print(animation_direction)
 	get_node("AnimationPlayer").play(animation_direction)
 
 func _on_DetectionZone_body_entered(_body):
