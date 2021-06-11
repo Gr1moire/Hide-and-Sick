@@ -10,6 +10,7 @@ onready var player = get_node(playerPath)
 onready var touch_player = $TouchPlayer
 onready var actual_direction = player_not_found
 onready var sprite = $Sprite
+onready var animationPlayer = $AnimationPlayer
 
 export(Vector2) var player_not_found
 export(NodePath) var playerPath
@@ -95,7 +96,7 @@ func AnimationLoop():
 		animation_direction = "Walk Left"
 	else:
 		animation_direction = "Walk Left"
-	get_node("AnimationPlayer").play(animation_direction)
+	animationPlayer.play(animation_direction)
 
 func _on_DetectionZone_body_entered(_body):
 	playerDetected = true
