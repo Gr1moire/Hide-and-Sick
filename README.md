@@ -48,7 +48,7 @@ Nous avons uploadé le jeu sur Itch.io. Celui-ci peut être téléchargé gratui
 - [Lucie Petit](https://github.com/FromageDePoney),
 - [Pascal Betti](https://github.com/Gr1moire)
 
-**Remerciements:**
+## Remerciements:
 - Maëlys Bras-de-fer pour le soutien moral ♥
 - Eric Matyas Soundimage.org pour la musique 'Horror Game Menu',
 - TinyWorlds pour la musique 'Horror Loop',
