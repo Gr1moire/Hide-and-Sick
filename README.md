@@ -29,24 +29,24 @@ Nous avons uploadé le jeu sur Itch.io. Celui-ci peut être téléchargé gratui
 ## Crédits
 
 **Project Lead:**
-- Pascal Betti
+- [Pascal Betti](https://github.com/Gr1moire)
 
 **Game Design:**
-- Lucie Petit,
-- Mathis Clanche
+- [Lucie Petit](https://github.com/FromageDePoney),
+- [Mathis Clanche](https://github.com/matmansn)
 
 **Programmers:**
-- Nolan Kijas,
-- Pascal Betti,
-- Lucie Philippon,
-- Lucie Petit
+- [Nolan Kijas](https://github.com/Spacelenin),
+- [Pascal Betti](https://github.com/Gr1moire),
+- [Lucie Philippon](https://github.com/Ersikan),
+- [Lucie Petit](https://github.com/FromageDePoney)
 
 **Game Artist:**
-- Lorien Remy
+- [Lorien Remy](https://github.com/LorienEpitech)
 
 **Level Design:**
-- Lucie Petit,
-- Pascal Betti
+- [Lucie Petit](https://github.com/FromageDePoney),
+- [Pascal Betti](https://github.com/Gr1moire)
 
 **Remerciements:**
 - Maëlys Bras-de-fer pour le soutien moral ♥
